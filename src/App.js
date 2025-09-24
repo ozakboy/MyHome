@@ -1,54 +1,43 @@
 ﻿import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import {
-    House,
-    User,
-    Folder,
-    Document,
-    Message,
-    ChatDotRound
-} from '@element-plus/icons-vue'
 
-export function appMainLogic() {
-    return {
-        components: {
-            House,
-            User,
-            Folder,
-            Document,
-            Message,
-            ChatDotRound
-        },
+export default {
+    name: 'App',
 
-        setup() {
-            const route = useRoute()
+    setup() {
+        const route = useRoute()
 
-            // 當前活動的導航項目
-            const activeIndex = computed(() => {
-                const path = route.path
+        // 當前活動的導航項目
+        const activeIndex = computed(() => {
+            const path = route.path
 
-                // 處理文章相關路由
-                if (path.startsWith('/articles')) {
-                    return '/articles'
-                }
-
-                return path
-            })
-
-            // 處理導航選擇
-            const handleSelect = (key, keyPath) => {
-                console.log('Navigation selected:', key, keyPath)
+            // 處理文章相關路由
+            if (path.startsWith('/articles')) {
+                return '/articles'
+            }
+            if (path.startsWith('/article/')) {
+                return '/articles'
             }
 
-            // 組件掛載後的處理
-            onMounted(() => {
-                console.log('App mounted successfully')
-            })
+            return path
+        })
 
-            return {
-                activeIndex,
-                handleSelect
-            }
+        // 處理導航選擇
+        const handleSelect = (key, keyPath) => {
+            console.log('Navigation selected:', key, keyPath)
+        }
+
+        // 組件掛載後的處理
+        onMounted(() => {
+            console.log('App mounted successfully')
+
+            // 添加頁面載入動畫
+            document.body.classList.add('loaded')
+        })
+
+        return {
+            activeIndex,
+            handleSelect
         }
     }
 }
