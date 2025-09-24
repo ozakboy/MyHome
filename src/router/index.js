@@ -4,8 +4,8 @@
 import HomePage from '@/views/HomePage/HomePage.vue'
 import AboutPage from '@/views/AboutPage/AboutPage.vue'
 import PortfolioPage from '@/views/PortfolioPage/PortfolioPage.vue'
-import ArticlesPage from '@/views/ArticlesPage/ArticlesPage.vue'
-import ArticleDetailPage from '@/views/ArticleDetailPage/ArticleDetailPage.vue'
+//import ArticlesPage from '@/views/ArticlesPage/ArticlesPage.vue'
+//import ArticleDetailPage from '@/views/ArticleDetailPage/ArticleDetailPage.vue'
 const Title = "全端系統工程師";
 const routes = [
     {
@@ -32,22 +32,22 @@ const routes = [
             title: '作品集 - ' + Title
         }
     },
-    {
-        path: '/articles/:category?',
-        name: 'Articles',
-        component: ArticlesPage,
-        meta: {
-            title: '專欄文章 - ' + Title
-        }
-    },
-    {
-        path: '/article/:category/:slug',
-        name: 'ArticleDetail',
-        component: ArticleDetailPage,
-        meta: {
-            title: '文章詳情 - ' + Title
-        }
-    }
+    //{
+    //    path: '/articles/:category?',
+    //    name: 'Articles',
+    //    component: ArticlesPage,
+    //    meta: {
+    //        title: '專欄文章 - ' + Title
+    //    }
+    //},
+    //{
+    //    path: '/article/:category/:slug',
+    //    name: 'ArticleDetail',
+    //    component: ArticleDetailPage,
+    //    meta: {
+    //        title: '文章詳情 - ' + Title
+    //    }
+    //}
 ]
 
 const router = createRouter({
