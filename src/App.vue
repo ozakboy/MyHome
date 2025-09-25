@@ -17,7 +17,8 @@
                              mode="horizontal"
                              router
                              class="nav-menu"
-                             @select="handleSelect">
+                             @select="handleSelect"
+                             :ellipsis="screenWidth <= 1280 && screenWidth > 720">
                         <el-menu-item index="/" route="/">
                             <el-icon><House /></el-icon>
                             <span>首頁</span>
@@ -72,7 +73,7 @@
                     </p>
                     <p>
                         <el-icon><ChatDotRound /></el-icon>
-                        Telegram: @your_telegram
+                        Telegram:  <a href="https://telegram.me/minksaki64">@minksaki64</a>
                     </p>
                 </div>
                 <div class="copyright">
