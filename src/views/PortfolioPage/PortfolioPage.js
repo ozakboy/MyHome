@@ -53,74 +53,7 @@ export default {
                 ],
                 github: null,
                 demo: null
-            },
-            {
-                id: 2,
-                title: '企業 ERP 系統',
-                description: '為中型製造業開發的完整 ERP 系統，整合進銷存、財務、人資等模組',
-                fullDescription: '這是一個全方位的企業資源規劃系統，使用 Vue.js + .NET Core 開發，包含完整的前後端分離架構。系統涵蓋企業營運的各個層面，從訂單管理到財務報表，提供一站式的管理解決方案。',
-                category: 'web',
-                image: '/images/projects/erp-system.jpg', // 需要圖片：ERP系統截圖
-                gallery: [
-                    '/images/projects/erp-system-1.jpg', // 需要圖片：ERP儀表板
-                    '/images/projects/erp-system-2.jpg'  // 需要圖片：ERP報表頁面
-                ],
-                features: [
-                    '模組化系統架構',
-                    '即時數據同步',
-                    '多語言支援',
-                    '權限管理系統',
-                    '自動報表生成'
-                ],
-                technologies: ['Vue.js', 'C#', '.NET Core', 'MSSQL', 'Redis', 'Docker'],
-                status: 'production',
-                date: '2023-09-15',
-                duration: '8 個月',
-                teamSize: '3 人團隊',
-                challenges: [
-                    {
-                        title: '複雜業務邏輯',
-                        solution: '採用領域驅動設計(DDD)，清晰劃分業務邊界'
-                    },
-                    {
-                        title: '效能優化',
-                        solution: '實施快取策略和資料庫索引優化，提升 50% 查詢速度'
-                    }
-                ],
-                github: null,
-                demo: 'https://demo.example.com'
-            },
-            {
-                id: 3,
-                title: '智能客服 Line Bot',
-                description: '整合 AI 的智能客服機器人，支援自然語言處理，24/7 自動回覆客戶詢問',
-                fullDescription: '結合 OpenAI API 開發的智能客服系統，能夠理解自然語言並提供準確的回覆。系統包含知識庫管理、對話紀錄分析、客戶滿意度追蹤等功能。',
-                category: 'bot',
-                image: '/images/projects/line-bot.jpg', // 需要圖片：Line Bot對話截圖
-                gallery: [
-                    '/images/projects/line-bot-1.jpg' // 需要圖片：Line Bot功能展示
-                ],
-                features: [
-                    '自然語言理解',
-                    'FAQ 自動回覆',
-                    '人工客服轉接',
-                    '對話紀錄分析',
-                    '多媒體訊息支援'
-                ],
-                technologies: ['Node.js', 'Line SDK', 'OpenAI API', 'MongoDB', 'Express'],
-                status: 'production',
-                date: '2023-07-20',
-                duration: '3 個月',
-                teamSize: '個人專案',
-                challenges: [
-                    {
-                        title: 'AI 回覆準確性',
-                        solution: '建立專屬知識庫並進行模型微調，提升回覆準確率到 95%'
-                    }
-                ],
-                github: 'https://github.com/example/linebot',
-                demo: null
-            },
+            },           
             {
                 id: 4,
                 title: '微服務電商平台',
