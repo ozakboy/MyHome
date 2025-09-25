@@ -42,7 +42,7 @@
           <div class="hero-image">
             <div class="avatar-container">
               <img 
-                src="/api/placeholder/300/300" 
+                src="/images/profile/avatar.jpg" 
                 alt="韓滷 - 全棧系統工程師"
                 class="avatar-image"
               />
@@ -84,7 +84,8 @@
       </section>
 
       <!-- Recent Articles Section -->
-      <section class="articles-section">
+
+      <!--<section class="articles-section">
         <div class="section-header">
           <h2 class="section-title">最新文章</h2>
           <el-button 
@@ -132,7 +133,7 @@
             </el-card>
           </el-col>
         </el-row>
-      </section>
+      </section>-->
 
       <!-- Contact Section -->
       <section class="contact-section">
@@ -152,42 +153,11 @@
               <el-icon size="24" color="#667eea"><ChatDotRound /></el-icon>
               <div class="contact-details">
                 <h3>Telegram</h3>
-                <p>@your_telegram</p>
+                <a href="https://telegram.me/minksaki64">@minksaki64</a>
               </div>
             </div>
           </div>
           
-          <div class="contact-form">
-            <el-form ref="contactForm" :model="contactData" label-position="top">
-              <el-form-item label="姓名">
-                <el-input v-model="contactData.name" placeholder="請輸入您的姓名" />
-              </el-form-item>
-              
-              <el-form-item label="信箱">
-                <el-input v-model="contactData.email" placeholder="請輸入您的信箱" />
-              </el-form-item>
-              
-              <el-form-item label="訊息">
-                <el-input 
-                  v-model="contactData.message" 
-                  type="textarea" 
-                  :rows="4"
-                  placeholder="請輸入您想說的話..."
-                />
-              </el-form-item>
-              
-              <el-form-item>
-                <el-button 
-                  type="primary" 
-                  @click="submitContact"
-                  :loading="isSubmitting"
-                  class="submit-button"
-                >
-                  發送訊息
-                </el-button>
-              </el-form-item>
-            </el-form>
-          </div>
         </div>
       </section>
     </div>

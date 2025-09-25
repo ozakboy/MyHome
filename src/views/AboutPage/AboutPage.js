@@ -15,9 +15,8 @@ export default {
                 skills: [
                     { name: 'C# / .NET Core', level: 95 },
                     { name: 'Web API / RESTful', level: 90 },
-                    { name: 'MSSQL / PostgreSQL', level: 85 },
-                    { name: 'Redis / MongoDB', level: 80 },
-                    { name: 'RabbitMQ / Kafka', level: 75 }
+                    { name: 'MSSQL ', level: 85 },
+                    { name: 'Java ', level: 85 },
                 ]
             },
             {
@@ -39,7 +38,7 @@ export default {
                 icon: 'Setting',
                 color: '#4facfe',
                 skills: [
-                    { name: 'Docker / K8s', level: 80 },
+                    { name: 'Docker ', level: 80 },
                     { name: 'CI/CD Pipeline', level: 85 },
                     { name: 'Git / GitHub', level: 95 },
                     { name: 'Azure / AWS', level: 75 },
@@ -111,24 +110,16 @@ export default {
                 icon: 'Medal',
                 color: '#ff9900'
             },
-            {
-                id: 3,
-                name: 'Professional Scrum Master I',
-                issuer: 'Scrum.org',
-                date: '2021年8月',
-                icon: 'Award',
-                color: '#4a90e2'
-            }
         ])
 
         // 教育背景資料
         const education = ref([
             {
                 id: 1,
-                degree: '資訊工程學系 學士',
-                school: '國立科技大學',
-                period: '2014 - 2018',
-                description: 'GPA: 3.8/4.0，專題：智慧交易系統開發'
+                degree: '資訊網路系 學士',
+                school: '嶺東科技大學',
+                period: '2011 - 2015',
+                description: '專題：晉暘科技 - 線上申報維修系統網站'
             }
         ])
 
