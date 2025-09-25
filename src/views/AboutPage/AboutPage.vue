@@ -5,7 +5,7 @@
             <section class="about-hero">
                 <div class="hero-content">
                     <div class="hero-image">
-                        <img src="/api/placeholder/400/400"
+                        <img src="#"
                              alt="韓滷 - 全棧系統工程師"
                              class="profile-image" />
                     </div>

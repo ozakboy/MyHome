@@ -23,11 +23,11 @@ export default {
                 description: '為金融機構開發的高頻交易系統，支援多策略並行運作，每秒可處理上千筆交易',
                 fullDescription: '這是一個為專業交易機構設計的高頻交易系統，採用 C# .NET Core 開發，具備極低延遲的交易執行能力。系統支援多種交易策略的並行運作，包含套利、做市、趨勢追蹤等策略。',
                 category: 'trading',
-                image: '/api/placeholder/400/250',
+                image: '/images/projects/trading-system.jpg', // 需要圖片：期貨交易系統截圖
                 gallery: [
-                    '/api/placeholder/800/400',
-                    '/api/placeholder/800/400',
-                    '/api/placeholder/800/400'
+                    '/images/projects/trading-system-1.jpg', // 需要圖片：交易系統主介面
+                    '/images/projects/trading-system-2.jpg', // 需要圖片：交易圖表頁面
+                    '/images/projects/trading-system-3.jpg'  // 需要圖片：風控監控頁面
                 ],
                 features: [
                     '微秒級延遲的交易執行',
@@ -60,10 +60,10 @@ export default {
                 description: '為中型製造業開發的完整 ERP 系統，整合進銷存、財務、人資等模組',
                 fullDescription: '這是一個全方位的企業資源規劃系統，使用 Vue.js + .NET Core 開發，包含完整的前後端分離架構。系統涵蓋企業營運的各個層面，從訂單管理到財務報表，提供一站式的管理解決方案。',
                 category: 'web',
-                image: '/api/placeholder/400/250',
+                image: '/images/projects/erp-system.jpg', // 需要圖片：ERP系統截圖
                 gallery: [
-                    '/api/placeholder/800/400',
-                    '/api/placeholder/800/400'
+                    '/images/projects/erp-system-1.jpg', // 需要圖片：ERP儀表板
+                    '/images/projects/erp-system-2.jpg'  // 需要圖片：ERP報表頁面
                 ],
                 features: [
                     '模組化系統架構',
@@ -96,9 +96,9 @@ export default {
                 description: '整合 AI 的智能客服機器人，支援自然語言處理，24/7 自動回覆客戶詢問',
                 fullDescription: '結合 OpenAI API 開發的智能客服系統，能夠理解自然語言並提供準確的回覆。系統包含知識庫管理、對話紀錄分析、客戶滿意度追蹤等功能。',
                 category: 'bot',
-                image: '/api/placeholder/400/250',
+                image: '/images/projects/line-bot.jpg', // 需要圖片：Line Bot對話截圖
                 gallery: [
-                    '/api/placeholder/800/400'
+                    '/images/projects/line-bot-1.jpg' // 需要圖片：Line Bot功能展示
                 ],
                 features: [
                     '自然語言理解',
@@ -127,11 +127,11 @@ export default {
                 description: '採用微服務架構的電商平台，支援高併發、彈性擴展，日交易量超過十萬筆',
                 fullDescription: '這是一個完整的電商解決方案，採用微服務架構設計，每個服務獨立部署和擴展。系統包含商品管理、訂單處理、支付整合、物流追蹤等完整功能。',
                 category: 'microservice',
-                image: '/api/placeholder/400/250',
+                image: '/images/projects/ecommerce-platform.jpg', // 需要圖片：電商平台首頁
                 gallery: [
-                    '/api/placeholder/800/400',
-                    '/api/placeholder/800/400',
-                    '/api/placeholder/800/400'
+                    '/images/projects/ecommerce-1.jpg', // 需要圖片：商品列表頁
+                    '/images/projects/ecommerce-2.jpg', // 需要圖片：購物車頁面
+                    '/images/projects/ecommerce-3.jpg'  // 需要圖片：結帳流程頁
                 ],
                 features: [
                     '微服務架構設計',
@@ -164,10 +164,10 @@ export default {
                 description: '為遊戲社群開發的多功能 Discord Bot，包含遊戲資訊查詢、活動管理等功能',
                 fullDescription: '專為遊戲社群設計的 Discord Bot，提供遊戲資訊查詢、隊伍配對、活動管理、積分系統等豐富功能，提升社群互動體驗。',
                 category: 'bot',
-                image: '/api/placeholder/400/250',
+                image: '/images/projects/discord-bot.jpg', // 需要圖片：Discord Bot介面
                 gallery: [
-                    '/api/placeholder/800/400',
-                    '/api/placeholder/800/400'
+                    '/images/projects/discord-bot-1.jpg', // 需要圖片：Bot指令展示
+                    '/images/projects/discord-bot-2.jpg'  // 需要圖片：Bot管理介面
                 ],
                 features: [
                     '遊戲資訊即時查詢',
@@ -196,9 +196,9 @@ export default {
                 description: '即時監控股票價格變動，支援技術指標分析與自動提醒功能',
                 fullDescription: '整合多個數據源的股票監控系統，提供即時報價、技術分析、異常提醒等功能。使用 WebSocket 實現即時數據推送，確保用戶獲得最新市場資訊。',
                 category: 'trading',
-                image: '/api/placeholder/400/250',
+                image: '/images/projects/stock-monitor.jpg', // 需要圖片：股票監控系統介面
                 gallery: [
-                    '/api/placeholder/800/400'
+                    '/images/projects/stock-monitor-1.jpg' // 需要圖片：K線圖表展示
                 ],
                 features: [
                     '即時股價監控',
