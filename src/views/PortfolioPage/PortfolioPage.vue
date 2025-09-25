@@ -37,6 +37,7 @@
                                  loading="lazy" />
                             <div class="project-overlay">
                                 <div class="overlay-content">
+
                                     <el-button type="primary" circle>
                                         <el-icon><View /></el-icon>
                                     </el-button>
@@ -52,6 +53,7 @@
                                                @click.stop="openDemo(project.demo)">
                                         <el-icon><Monitor /></el-icon>
                                     </el-button>
+
                                 </div>
                             </div>
                         </div>
@@ -108,121 +110,6 @@
             </div>
 
             <!-- Project Detail Modal -->
-            <el-dialog v-model="showProjectDetail"
-                       :title="selectedProject?.title"
-                       width="80%"
-                       top="5vh"
-                       class="project-detail-dialog">
-                <div v-if="selectedProject" class="project-detail">
-                    <!-- Project Images Gallery -->
-                    <div class="project-gallery">
-                        <el-carousel height="400px" indicator-position="outside">
-                            <el-carousel-item v-for="(image, index) in selectedProject.gallery" :key="index">
-                                <img :src="image" :alt="`${selectedProject.title} - 圖片 ${index + 1}`" />
-                            </el-carousel-item>
-                        </el-carousel>
-                    </div>
-
-                    <!-- Project Details -->
-                    <div class="detail-content">
-                        <el-row :gutter="30">
-                            <el-col :xs="24" :md="16">
-                                <div class="project-info">
-                                    <h3>專案簡介</h3>
-                                    <p class="project-full-description">{{ selectedProject.fullDescription }}</p>
-
-                                    <h3>主要功能</h3>
-                                    <ul class="feature-list">
-                                        <li v-for="feature in selectedProject.features" :key="feature">
-                                            <el-icon><Check /></el-icon>
-                                            {{ feature }}
-                                        </li>
-                                    </ul>
-
-                                    <h3>技術挑戰與解決方案</h3>
-                                    <div class="challenges">
-                                        <div v-for="challenge in selectedProject.challenges"
-                                             :key="challenge.title"
-                                             class="challenge-item">
-                                            <h4>{{ challenge.title }}</h4>
-                                            <p>{{ challenge.solution }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </el-col>
-
-                            <el-col :xs="24" :md="8">
-                                <div class="project-meta">
-                                    <div class="meta-section">
-                                        <h4>專案資訊</h4>
-                                        <div class="meta-item">
-                                            <label>分類：</label>
-                                            <span>{{ getCategoryName(selectedProject.category) }}</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <label>狀態：</label>
-                                            <el-tag :type="getStatusType(selectedProject.status)">
-                                                {{ getStatusText(selectedProject.status) }}
-                                            </el-tag>
-                                        </div>
-                                        <div class="meta-item">
-                                            <label>開發時間：</label>
-                                            <span>{{ selectedProject.duration }}</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <label>團隊規模：</label>
-                                            <span>{{ selectedProject.teamSize }}</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="meta-section">
-                                        <h4>使用技術</h4>
-                                        <div class="tech-tags">
-                                            <el-tag v-for="tech in selectedProject.technologies"
-                                                    :key="tech"
-                                                    class="tech-tag">
-                                                {{ tech }}
-                                            </el-tag>
-                                        </div>
-                                    </div>
-
-                                    <div class="meta-section">
-                                        <h4>相關連結</h4>
-                                        <div class="project-links">
-                                            <el-button v-if="selectedProject.github"
-                                                       type="primary"
-                                                       @click="openGithub(selectedProject.github)"
-                                                       class="link-button">
-                                                <el-icon><Link /></el-icon>
-                                                GitHub
-                                            </el-button>
-
-                                            <el-button v-if="selectedProject.demo"
-                                                       @click="openDemo(selectedProject.demo)"
-                                                       class="link-button">
-                                                <el-icon><Monitor /></el-icon>
-                                                線上展示
-                                            </el-button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </el-col>
-                        </el-row>
-                    </div>
-                </div>
-
-                <template #footer>
-                    <div class="dialog-footer">
-                        <el-button @click="showProjectDetail = false">關閉</el-button>
-                        <el-button v-if="selectedProject?.demo"
-                                   type="primary"
-                                   @click="openDemo(selectedProject.demo)">
-                            查看展示
-                        </el-button>
-                    </div>
-                </template>
-            </el-dialog>
-
             <!-- Statistics Section -->
             <section class="portfolio-stats">
                 <h2 class="section-title">專案統計</h2>
@@ -265,6 +152,123 @@
             </section>
         </div>
     </div>
+
+
+    <el-dialog v-model="showProjectDetail"
+               :title="selectedProject?.title"
+               width="80%"
+               top="5vh"
+               class="project-detail-dialog">
+        <div v-if="selectedProject" class="project-detail">
+            <!-- Project Images Gallery -->
+            <div class="project-gallery">
+                <el-carousel height="400px" indicator-position="outside">
+                    <el-carousel-item v-for="(image, index) in selectedProject.gallery" :key="index">
+                        <img :src="image" :alt="`${selectedProject.title} - 圖片 ${index + 1}`" />
+                    </el-carousel-item>
+                </el-carousel>
+            </div>
+
+            <!-- Project Details -->
+            <div class="detail-content">
+                <el-row :gutter="30">
+                    <el-col :xs="24" :md="16">
+                        <div class="project-info">
+                            <h3>專案簡介</h3>
+                            <p class="project-full-description">{{ selectedProject.fullDescription }}</p>
+
+                            <h3>主要功能</h3>
+                            <ul class="feature-list">
+                                <li v-for="feature in selectedProject.features" :key="feature">
+                                    <el-icon><Check /></el-icon>
+                                    {{ feature }}
+                                </li>
+                            </ul>
+
+                            <h3>技術挑戰與解決方案</h3>
+                            <div class="challenges">
+                                <div v-for="challenge in selectedProject.challenges"
+                                     :key="challenge.title"
+                                     class="challenge-item">
+                                    <h4>{{ challenge.title }}</h4>
+                                    <p>{{ challenge.solution }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </el-col>
+
+                    <el-col :xs="24" :md="8">
+                        <div class="project-meta">
+                            <div class="meta-section">
+                                <h4>專案資訊</h4>
+                                <div class="meta-item">
+                                    <label>分類：</label>
+                                    <span>{{ getCategoryName(selectedProject.category) }}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <label>狀態：</label>
+                                    <el-tag :type="getStatusType(selectedProject.status)">
+                                        {{ getStatusText(selectedProject.status) }}
+                                    </el-tag>
+                                </div>
+                                <div class="meta-item">
+                                    <label>開發時間：</label>
+                                    <span>{{ selectedProject.duration }}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <label>團隊規模：</label>
+                                    <span>{{ selectedProject.teamSize }}</span>
+                                </div>
+                            </div>
+
+                            <div class="meta-section">
+                                <h4>使用技術</h4>
+                                <div class="tech-tags">
+                                    <el-tag v-for="tech in selectedProject.technologies"
+                                            :key="tech"
+                                            class="tech-tag">
+                                        {{ tech }}
+                                    </el-tag>
+                                </div>
+                            </div>
+
+                            <div class="meta-section">
+                                <h4>相關連結</h4>
+                                <div class="project-links">
+                                    <el-button v-if="selectedProject.github"
+                                               type="primary"
+                                               @click="openGithub(selectedProject.github)"
+                                               class="link-button">
+                                        <el-icon><Link /></el-icon>
+                                        GitHub
+                                    </el-button>
+
+                                    <el-button v-if="selectedProject.demo"
+                                               @click="openDemo(selectedProject.demo)"
+                                               class="link-button">
+                                        <el-icon><Monitor /></el-icon>
+                                        線上展示
+                                    </el-button>
+                                </div>
+                            </div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </div>
+        </div>
+
+        <template #footer>
+            <div class="dialog-footer">
+                <el-button @click="showProjectDetail = false">關閉</el-button>
+                <el-button v-if="selectedProject?.demo"
+                           type="primary"
+                           @click="openDemo(selectedProject.demo)">
+                    查看展示
+                </el-button>
+            </div>
+        </template>
+    </el-dialog>
+
 </template>
 
 
