@@ -4,7 +4,7 @@
       "id": 1,
       "title": "期貨高頻交易系統",
       "description": "為金融機構開發的高頻交易系統，支援多策略並行運作，每秒可處理上千筆交易",
-      "fullDescription": "這是一個為專業交易機構設計的高頻交易系統，採用 C# .NET 開發，具備極低延遲的交易執行能力。系統支援多種交易策略的並行運作，包含套利、做市、趨勢追蹤等策略。",
+      "fullDescription": "這是一個為專業交易機構設計的高頻交易系統，採用 C# .NET 開發，具備極低延遲的交易執行能力。系統支援多種交易策略的並行運作，包含套利、做市、趨勢追蹤等策略。從圖片中可見系統能即時監控各種期貨商品價格，提供完整的交易數據與分析功能。",
       "category": "trading",
       "image": "/images/projects/trading-system.jpg",
       "gallery": [
@@ -16,9 +16,11 @@
         "微秒級延遲的交易執行",
         "支援多策略並行運作",
         "即時風險控制系統",
-        "視覺化監控儀表板"
+        "完整的期貨商品監控",
+        "視覺化交易數據分析",
+        "多商品同時監控與交易"
       ],
-      "technologies": [ "C#", ".NET Core" , ".NET 6", "WebSocket", "SignalR", "MS SQL" ],
+      "technologies": [ "C#", ".NET Core", ".NET 6", "WebSocket", "SignalR", "MS SQL", "期貨API" ],
       "status": "production",
       "date": "2021-12-01",
       "duration": "24 個月 持續開發中",
@@ -31,6 +33,10 @@
         {
           "title": "高併發處理",
           "solution": "實現事件驅動架構，支援每秒處理上千筆交易"
+        },
+        {
+          "title": "多商品監控",
+          "solution": "建立高效的數據管道，同時監控數十種期貨商品價格變化"
         }
       ],
       "github": null,
@@ -38,60 +44,70 @@
     },
     {
       "id": 2,
-      "title": "Vue.js 企業級管理系統",
-      "description": "採用 Vue 3 + Element Plus 開發的現代化企業管理系統，支援多角色權限管理",
-      "fullDescription": "這是一個完整的企業級管理系統解決方案，採用最新的 Vue 3 組合式 API 開發，整合了用戶管理、權限控制、資料統計、報表生成等核心功能模組。",
+      "title": "Facebook 粉絲專頁管理系統",
+      "description": "智能化 Facebook 粉絲專頁管理工具，支援貼文排程、粉絲互動分析、自動回覆等功能",
+      "fullDescription": "專為社群媒體經營者設計的 Facebook 粉絲專頁管理系統，整合 Facebook Graph API，提供完整的社群經營解決方案。系統具備貼文管理、粉絲互動追蹤、數據分析、自動化回覆等功能，大幅提升社群經營效率。支援多粉絲專頁統一管理，讓社群營運更加便利。",
       "category": "web",
-      "image": "/images/projects/vue-admin-system.jpg",
+      "image": "/images/projects/facebook-admin.jpg",
       "gallery": [
-        "/images/projects/vue-admin-1.jpg",
-        "/images/projects/vue-admin-2.jpg",
-        "/images/projects/vue-admin-3.jpg"
+        "/images/projects/facebook-admin-1.jpg",
+        "/images/projects/facebook-admin-2.jpg",
+        "/images/projects/facebook-admin-3.jpg",
+        "/images/projects/facebook-admin-4.jpg"
       ],
       "features": [
-        "響應式設計支援各種裝置",
-        "多角色權限管理系統",
-        "動態路由與選單配置",
-        "豐富的圖表與統計功能",
-        "完整的 CRUD 操作介面"
+        "Facebook Graph API 整合",
+        "貼文排程與自動發佈",
+        "粉絲互動數據分析",
+        "自動回覆與客服功能",
+        "多粉絲專頁統一管理",
+        "貼文效果追蹤分析",
+        "留言與私訊管理",
+        "粉絲成長趨勢分析"
       ],
-      "technologies": [ "Vue.js 3", "Element Plus", "Vite", "Pinia", "Axios", "ECharts" ],
+      "technologies": [ "C#", ".NET Core", "Facebook Graph API", "Vue.js", "Element Plus", "MS SQL" ],
       "status": "production",
-      "date": "2023-08-15",
-      "duration": "4 個月",
-      "teamSize": "3 人團隊",
+      "date": "2023-03-15",
+      "duration": "5 個月",
+      "teamSize": "2 人團隊",
       "challenges": [
         {
-          "title": "權限系統設計",
-          "solution": "實現基於角色的動態權限控制，支援細粒度的功能權限管理"
+          "title": "API 權限管理",
+          "solution": "實現安全的 OAuth 2.0 認證流程，確保用戶數據安全"
         },
         {
-          "title": "性能優化",
-          "solution": "採用虛擬滾動、懶加載等技術，大幅提升大數據量頁面的渲染效能"
+          "title": "大量數據處理",
+          "solution": "採用分批處理和快取機制，優化大量粉絲數據的載入速度"
+        },
+        {
+          "title": "即時同步",
+          "solution": "使用 WebSocket 實現粉絲專頁數據的即時同步更新"
         }
       ],
-      "github": "https://github.com/example/vue-admin",
-      "demo": "https://admin.example.com"
+      "github": null,
+      "demo": null
     },
     {
       "id": 3,
-      "title": "Line Bot 客服助手",
-      "description": "智能客服 Line Bot，支援自動回覆、人工客服轉接、訂單查詢等多項功能",
-      "fullDescription": "為電商企業開發的智能客服系統，整合 Line Messaging API，提供24小時客戶服務。具備自然語言處理能力，能智能識別客戶意圖並提供相應服務。",
+      "title": "Line Bot 智慧客服系統",
+      "description": "多功能 Line Bot 客服助手，支援智能對話、訂單查詢、客服轉接等企業級功能",
+      "fullDescription": "為企業量身打造的 Line Bot 智慧客服系統，整合 Line Messaging API 與自然語言處理技術，提供24小時不間斷的客戶服務。系統具備智能關鍵字識別、多媒體訊息處理、人工客服轉接、客戶資料管理等完整功能，大幅提升客戶服務效率與滿意度。",
       "category": "bot",
       "image": "/images/projects/line-bot.jpg",
       "gallery": [
-        "/images/projects/line-bot-1.jpg",
-        "/images/projects/line-bot-2.jpg"
+        "/images/projects/line-bot.jpg"
       ],
       "features": [
         "智能關鍵字識別與回覆",
         "訂單狀態即時查詢",
         "人工客服無縫轉接",
         "多媒體訊息支援",
-        "客戶資料自動建檔"
+        "客戶資料自動建檔",
+        "常見問題自動回答",
+        "業務流程引導",
+        "數據統計與分析"
       ],
-      "technologies": [ "C#", ".NET Core", "Line Messaging API", "Azure Bot Service", "CosmosDB" ],
+      "technologies": [ "C#", ".NET Core", "Line Messaging API", "Azure Bot Service", "MS SQL", "Redis" ],
       "status": "production",
       "date": "2023-06-20",
       "duration": "3 個月",
@@ -104,6 +120,10 @@
         {
           "title": "高併發處理",
           "solution": "採用訊息佇列和非同步處理，確保大量用戶同時使用時的穩定性"
+        },
+        {
+          "title": "對話流程設計",
+          "solution": "建立彈性的對話狀態機制，支援複雜的多輪對話場景"
         }
       ],
       "github": null,
@@ -111,99 +131,125 @@
     },
     {
       "id": 4,
-      "title": "微服務電商平台",
-      "description": "採用微服務架構的電商平台，支援高併發、彈性擴展，日交易量超過十萬筆",
-      "fullDescription": "這是一個完整的電商解決方案，採用微服務架構設計，每個服務獨立部署和擴展。系統包含商品管理、訂單處理、支付整合、物流追蹤等完整功能。",
-      "category": "microservice",
-      "image": "/images/projects/ecommerce-platform.jpg",
-      "gallery": [
-        "/images/projects/ecommerce-1.jpg",
-        "/images/projects/ecommerce-2.jpg",
-        "/images/projects/ecommerce-3.jpg"
-      ],
-      "features": [
-        "微服務架構設計",
-        "容器化部署",
-        "自動擴展機制",
-        "API Gateway",
-        "分散式事務處理"
-      ],
-      "technologies": [ "Docker", "Kubernetes", ".NET Core", "RabbitMQ", "Redis", "PostgreSQL" ],
-      "status": "production",
-      "date": "2023-05-10",
-      "duration": "10 個月",
-      "teamSize": "5 人團隊",
-      "challenges": [
-        {
-          "title": "服務間通訊",
-          "solution": "實現事件驅動架構，使用 RabbitMQ 處理非同步通訊"
-        },
-        {
-          "title": "分散式事務",
-          "solution": "採用 Saga 模式處理跨服務事務，確保資料一致性"
-        }
-      ],
-      "github": null,
-      "demo": "https://shop.example.com"
-    },
-    {
-      "id": 5,
-      "title": "Discord 遊戲社群 Bot",
-      "description": "為遊戲社群開發的多功能 Discord Bot，包含遊戲資訊查詢、活動管理等功能",
-      "fullDescription": "專為遊戲社群設計的 Discord Bot，提供遊戲資訊查詢、隊伍配對、活動管理、積分系統等豐富功能，提升社群互動體驗。",
+      "title": "Telegram Bot 多功能助手",
+      "description": "功能豐富的 Telegram Bot，提供遊戲輔助、資訊查詢、群組管理等多元化服務",
+      "fullDescription": "專為 Telegram 平台設計的多功能機器人助手，支援遊戲社群管理、即時資訊查詢、用戶互動等豐富功能。機器人具備智能指令識別、權限管理、數據統計等企業級特性，適用於各種類型的社群與個人使用需求。",
       "category": "bot",
-      "image": "/images/projects/discord-bot.jpg",
+      "image": "/images/projects/telegram-bot.jpg",
       "gallery": [
-        "/images/projects/discord-bot-1.jpg",
-        "/images/projects/discord-bot-2.jpg"
+        "/images/projects/telegram-bot.jpg"
       ],
       "features": [
-        "遊戲資訊即時查詢",
-        "自動隊伍配對系統",
-        "活動報名管理",
-        "積分與排行榜系統",
-        "音樂播放功能"
+        "智能指令識別與處理",
+        "遊戲資料查詢與輔助",
+        "群組管理與權限控制",
+        "自動化任務排程",
+        "用戶數據統計分析",
+        "即時通知與提醒功能",
+        "多語言支援",
+        "可擴展的插件架構"
       ],
-      "technologies": [ "Python", "Discord.py", "PostgreSQL", "Redis", "Docker" ],
+      "technologies": [ "C#", ".NET Core", "Telegram Bot API", "SQLite", "Redis", "Docker" ],
       "status": "production",
-      "date": "2023-03-25",
-      "duration": "2 個月",
+      "date": "2022-08-20",
+      "duration": "4 個月",
       "teamSize": "個人專案",
       "challenges": [
         {
-          "title": "高併發處理",
-          "solution": "使用異步程式設計和連接池，支援同時服務多個伺服器"
+          "title": "API 限制處理",
+          "solution": "實現智能請求調度，避免觸及 Telegram API 的頻率限制"
+        },
+        {
+          "title": "功能模組化",
+          "solution": "採用插件架構設計，支援動態載入和卸載功能模組"
+        },
+        {
+          "title": "數據持久化",
+          "solution": "設計高效的數據存儲方案，支援大量用戶數據的快速存取"
         }
       ],
-      "github": "https://github.com/example/discord-bot",
+      "github": null,
+      "demo": null
+    },
+    {
+      "id": 5,
+      "title": "股票監控系統",
+      "description": "專業股票市場監控平台，提供即時報價、技術分析、風險提醒等完整功能",
+      "fullDescription": "專業的股票市場監控平台，整合台股即時資訊與技術分析工具。平台提供完整的股票監控功能，包含自訂監控條件、價格異動通知、技術指標計算、投資組合管理等，協助投資者掌握市場動態，做出明智的投資決策。",
+      "category": "trading",
+      "image": "/images/projects/stock-monitor.jpg",
+      "gallery": [
+        "/images/projects/stock-monitor.jpg"
+      ],
+      "features": [
+        "台股即時報價監控",
+        "技術指標計算與圖表",
+        "自訂監控條件設定",
+        "價格異動即時通知",
+        "投資組合追蹤管理",
+        "歷史資料回測分析",
+        "風險評估與控制",
+        "多視窗同步顯示"
+      ],
+      "technologies": [ "C#", "WinForms", "WebSocket", "SQLite", "證券API", "TradingView" ],
+      "status": "production",
+      "date": "2023-01-10",
+      "duration": "6 個月",
+      "teamSize": "個人專案",
+      "challenges": [
+        {
+          "title": "即時數據處理",
+          "solution": "採用高效能的事件驅動架構，確保毫秒級的數據更新"
+        },
+        {
+          "title": "大量數據存儲",
+          "solution": "實現智能數據壓縮和分層存儲，優化歷史數據存取效率"
+        },
+        {
+          "title": "用戶介面優化",
+          "solution": "設計直觀的多視窗介面，支援自訂版面配置和快速操作"
+        }
+      ],
+      "github": null,
       "demo": null
     },
     {
       "id": 6,
-      "title": "即時股票監控系統",
-      "description": "即時監控股票價格變動，支援技術指標分析與自動提醒功能",
-      "fullDescription": "整合多個數據源的股票監控系統，提供即時報價、技術分析、異常提醒等功能。使用 WebSocket 實現即時數據推送，確保用戶獲得最新市場資訊。",
+      "title": "虛擬貨幣報價數據系統",
+      "description": "全球虛擬貨幣市場數據整合平台，提供即時報價、歷史數據、市場分析等服務",
+      "fullDescription": "整合全球主要虛擬貨幣交易所的數據聚合平台，提供 Bitcoin、Ethereum、及各種主流加密貨幣的即時報價與市場數據。系統具備多交易所價格比較、套利機會偵測、市場深度分析、價格預警等功能，為加密貨幣投資者提供專業的數據服務。",
       "category": "trading",
-      "image": "/images/projects/stock-monitor.jpg",
+      "image": "/images/projects/crypto-data.jpg",
       "gallery": [
-        "/images/projects/stock-monitor-1.jpg"
+        "/images/projects/crypto-data.jpg"
       ],
       "features": [
-        "即時股價監控",
-        "技術指標分析",
-        "自訂提醒條件",
-        "歷史數據回測",
-        "K線圖表顯示"
+        "多交易所即時報價整合",
+        "虛擬貨幣市場深度分析",
+        "價格套利機會偵測",
+        "歷史數據回測分析",
+        "市場趨勢預測指標",
+        "自訂價格提醒通知",
+        "投資組合績效追蹤",
+        "API 數據服務提供"
       ],
-      "technologies": [ "Vue.js", "Node.js", "WebSocket", "TradingView", "MongoDB" ],
-      "status": "development",
-      "date": "2024-01-05",
-      "duration": "進行中",
-      "teamSize": "2 人團隊",
+      "technologies": [ "C#", ".NET Core", "WebSocket", "Redis", "MongoDB", "各大交易所API" ],
+      "status": "production",
+      "date": "2023-09-10",
+      "duration": "7 個月",
+      "teamSize": "個人專案",
       "challenges": [
         {
-          "title": "數據即時性",
-          "solution": "使用 WebSocket 和事件驅動架構，確保毫秒級數據更新"
+          "title": "多交易所整合",
+          "solution": "建立統一的數據介面，整合 Binance、Coinbase 等主流交易所 API"
+        },
+        {
+          "title": "高頻數據處理",
+          "solution": "採用分散式架構和快取機制，處理每秒數萬筆的價格更新"
+        },
+        {
+          "title": "數據準確性",
+          "solution": "實現多重驗證機制，確保跨交易所數據的一致性和準確性"
         }
       ],
       "github": null,
