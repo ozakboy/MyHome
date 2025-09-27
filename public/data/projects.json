@@ -52,8 +52,7 @@
       "gallery": [
         "/images/projects/facebook-admin-1.jpg",
         "/images/projects/facebook-admin-2.jpg",
-        "/images/projects/facebook-admin-3.jpg",
-        "/images/projects/facebook-admin-4.jpg"
+        "/images/projects/facebook-admin-3.jpg"
       ],
       "features": [
         "Facebook Graph API 整合",
@@ -67,9 +66,9 @@
       ],
       "technologies": [ "C#", ".NET Core", "Facebook Graph API", "Vue.js", "Element Plus", "MS SQL" ],
       "status": "production",
-      "date": "2023-03-15",
-      "duration": "5 個月",
-      "teamSize": "2 人團隊",
+      "date": "2025-05-15",
+      "duration": "6 個月",
+      "teamSize": "個人專案",
       "challenges": [
         {
           "title": "API 權限管理",
@@ -95,7 +94,9 @@
       "category": "bot",
       "image": "/images/projects/line-bot.jpg",
       "gallery": [
-        "/images/projects/line-bot.jpg"
+        "/images/projects/line-bot-1.jpg",
+        "/images/projects/line-bot-2.jpg",
+        "/images/projects/line-bot-3.jpg"
       ],
       "features": [
         "智能關鍵字識別與回覆",
@@ -110,13 +111,9 @@
       "technologies": [ "C#", ".NET Core", "Line Messaging API", "Azure Bot Service", "MS SQL", "Redis" ],
       "status": "production",
       "date": "2023-06-20",
-      "duration": "3 個月",
+      "duration": "4 個月",
       "teamSize": "2 人團隊",
       "challenges": [
-        {
-          "title": "自然語言處理",
-          "solution": "整合 Azure 認知服務，提升文字理解和意圖識別準確率"
-        },
         {
           "title": "高併發處理",
           "solution": "採用訊息佇列和非同步處理，確保大量用戶同時使用時的穩定性"
@@ -137,7 +134,9 @@
       "category": "bot",
       "image": "/images/projects/telegram-bot.jpg",
       "gallery": [
-        "/images/projects/telegram-bot.jpg"
+        "/images/projects/telegram-bot-1.jpg",
+        "/images/projects/telegram-bot-2.jpg",
+        "/images/projects/telegram-bot-3.jpg"
       ],
       "features": [
         "智能指令識別與處理",
@@ -149,10 +148,10 @@
         "多語言支援",
         "可擴展的插件架構"
       ],
-      "technologies": [ "C#", ".NET Core", "Telegram Bot API", "SQLite", "Redis", "Docker" ],
+      "technologies": [ "C#", ".NET Core", "Telegram Bot API", "MS SQL" ],
       "status": "production",
-      "date": "2022-08-20",
-      "duration": "4 個月",
+      "date": "2023-08-20",
+      "duration": "5 個月",
       "teamSize": "個人專案",
       "challenges": [
         {
@@ -179,7 +178,9 @@
       "category": "trading",
       "image": "/images/projects/stock-monitor.jpg",
       "gallery": [
-        "/images/projects/stock-monitor.jpg"
+        "/images/projects/stock-monitor-1.jpg",
+        "/images/projects/stock-monitor-2.jpg",
+        "/images/projects/stock-monitor-3.jpg"
       ],
       "features": [
         "台股即時報價監控",
@@ -191,10 +192,10 @@
         "風險評估與控制",
         "多視窗同步顯示"
       ],
-      "technologies": [ "C#", "WinForms", "WebSocket", "SQLite", "證券API", "TradingView" ],
+      "technologies": [ "C#", "WinForms", "WebSocket", "MS SQL", "證券API" ],
       "status": "production",
-      "date": "2023-01-10",
-      "duration": "6 個月",
+      "date": "2021-01-10",
+      "duration": "7 個月",
       "teamSize": "個人專案",
       "challenges": [
         {
@@ -221,7 +222,9 @@
       "category": "trading",
       "image": "/images/projects/crypto-data.jpg",
       "gallery": [
-        "/images/projects/crypto-data.jpg"
+        "/images/projects/crypto-data-1.jpg",
+        "/images/projects/crypto-data-2.jpg",
+        "/images/projects/crypto-data-3.jpg"
       ],
       "features": [
         "多交易所即時報價整合",
@@ -233,9 +236,9 @@
         "投資組合績效追蹤",
         "API 數據服務提供"
       ],
-      "technologies": [ "C#", ".NET Core", "WebSocket", "Redis", "MongoDB", "各大交易所API" ],
+      "technologies": [ "C#", ".NET Core", "WebSocket", "MS SQL", "各大交易所API" ],
       "status": "production",
-      "date": "2023-09-10",
+      "date": "2024-09-10",
       "duration": "7 個月",
       "teamSize": "個人專案",
       "challenges": [
@@ -250,6 +253,40 @@
         {
           "title": "數據準確性",
           "solution": "實現多重驗證機制，確保跨交易所數據的一致性和準確性"
+        }
+      ],
+      "github": null,
+      "demo": null
+    },
+    {
+      "id": 7,
+      "title": "Discord Bot 遊戲社群助手",
+      "description": "專為遊戲社群設計的 Discord Bot，提供遊戲輔助、社群管理、娛樂互動等豐富功能",
+      "fullDescription": "專為 Discord 遊戲社群開發的多功能機器人，整合遊戲資訊查詢、隊伍配對、活動管理等功能。機器人支援自訂指令、權限管理、數據統計等進階功能，能有效提升遊戲社群的互動體驗與管理效率。適用於各種遊戲類型的 Discord 伺服器。",
+      "category": "bot",
+      "image": "/images/projects/discord-bot.jpg",
+      "gallery": [
+        "/images/projects/discord-bot.jpg"
+      ],
+      "features": [
+        "遊戲資訊即時查詢",
+        "自動隊伍配對系統",
+        "活動報名管理",
+        "音樂播放功能",
+        "積分與排行榜系統",
+        "自訂指令與回應",
+        "頻道權限管理",
+        "伺服器統計分析"
+      ],
+      "technologies": [ "C#", "Discord.NET", ".NET Core", "Docker" ],
+      "status": "production",
+      "date": "2020-11-15",
+      "duration": "2 個月",
+      "teamSize": "個人專案",
+      "challenges": [
+        {
+          "title": "Discord API 整合",
+          "solution": "深入研究 Discord.NET 框架，實現穩定的事件處理和指令系統"
         }
       ],
       "github": null,
