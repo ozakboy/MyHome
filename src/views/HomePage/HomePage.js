@@ -14,7 +14,7 @@ export default {
                 id: 1,
                 title: '後端開發',
                 description: '專精於 C# .NET 開發，具備豐富的 API 設計與微服務架構經驗',
-                icon: 'Server',
+                icon: 'Service',
                 color: '#667eea',
                 tags: ['C#', '.NET Core', 'Web API', '微服務', 'MSSQL', 'Redis']
             },

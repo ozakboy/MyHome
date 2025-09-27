@@ -34,7 +34,7 @@
                             <span>作品集</span>
                         </el-menu-item>
 
-                        <el-sub-menu index="/articles">
+                        <!--<el-sub-menu index="/articles">
                             <template #title>
                                 <el-icon><Document /></el-icon>
                                 <span>專欄文章</span>
@@ -52,7 +52,7 @@
                             <el-menu-item index="/articles/news" route="/articles/news">
                                 技術動態
                             </el-menu-item>
-                        </el-sub-menu>
+                        </el-sub-menu>-->
                     </el-menu>
                 </nav>
             </div>
