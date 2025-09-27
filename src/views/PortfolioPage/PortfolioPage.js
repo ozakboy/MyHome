@@ -1,4 +1,4 @@
-﻿import { ref, reactive, computed, onMounted } from 'vue'
+﻿import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import portfolioService from '@/services/portfolioService'
@@ -16,72 +16,98 @@ export default {
         const showProjectDetail = ref(false)
         const selectedProject = ref(null)
 
-        // 載入狀態
+        // 載入狀態（只有初始載入）
         const loading = ref(true)
 
-        // 專案資料（從服務載入）
-        const projects = ref([])
+        // 所有專案資料（一次載入後不再改變）
+        const allProjects = ref([])
         const statistics = ref([])
 
-        // 計算屬性：篩選後的專案
+        // 計算屬性：根據篩選條件顯示專案（純前端篩選）
         const filteredProjects = computed(() => {
             if (activeFilter.value === 'all') {
-                return projects.value
+                return allProjects.value
             }
-            return projects.value.filter(project => project.category === activeFilter.value)
+
+            return allProjects.value.filter(project =>
+                project.category === activeFilter.value
+            )
         })
 
-        // 載入專案資料
+        // 初始載入專案資料（只執行一次）
         const loadProjects = async () => {
             loading.value = true
 
             try {
-                // 載入專案資料
-                const projectsData = await portfolioService.getAllProjects()
-                projects.value = projectsData
+                // 載入專案資料（只載入一次）
+                const projectsData = await portfolioService.loadProjects()
+                allProjects.value = projectsData
 
                 // 載入統計資料
-                const statsData = await portfolioService.getStatistics()
+                const statsData = portfolioService.getStatistics()
                 statistics.value = statsData
 
-                console.log('專案資料載入完成:', projects.value.length, '個專案')
+                console.log('專案資料載入完成:', allProjects.value.length, '個專案')
 
             } catch (error) {
                 console.error('載入專案資料失敗:', error)
                 ElMessage.error('載入專案資料失敗，請重新整理頁面')
+
+                allProjects.value = []
+                statistics.value = []
             } finally {
                 loading.value = false
             }
         }
 
-        // 搜尋專案
-        const searchProjects = async (keyword) => {
-            try {
-                const results = await portfolioService.searchProjects(keyword)
-                projects.value = results
-            } catch (error) {
-                console.error('搜尋專案失敗:', error)
-                ElMessage.error('搜尋失敗')
-            }
+        // 處理篩選器變更（純前端操作）
+        const handleFilterChange = (tab) => {
+            console.log(tab);          
+
+            console.log('前端篩選切換:', tab)
+            activeFilter.value = tab
+
+            // 重新觸發動畫
+            setTimeout(() => {
+                animateProjects()
+            }, 50)
         }
 
-        // 方法
-        const handleFilterChange = async (tab) => {
-            console.log('Filter changed:', tab.name)
-            activeFilter.value = tab.name
+        // 直接設定篩選條件
+        const setFilter = (category) => {
+            console.log('設定篩選條件:', category)
+            activeFilter.value = category
 
-            try {
-                const filteredData = await portfolioService.getProjectsByCategory(tab.name)
-                // 注意：這裡不直接設定 projects.value，因為我們使用 computed 屬性來篩選
-                // projects.value = filteredData
-            } catch (error) {
-                console.error('篩選專案失敗:', error)
-            }
+            setTimeout(() => {
+                animateProjects()
+            }, 50)
         }
 
+        // 搜尋專案（純前端搜尋）
+        const searchProjects = (keyword) => {
+            if (!keyword || keyword.trim() === '') {
+                activeFilter.value = 'all'
+                return
+            }
+
+            console.log('前端搜尋:', keyword)
+            const results = portfolioService.searchProjects(keyword)
+
+            // 這裡可以設定搜尋結果，或者您可以新增一個搜尋模式
+            console.log('搜尋結果:', results.length, '個專案')
+        }
+
+        // 專案詳情相關方法
         const openProjectDetail = (project) => {
+            if (!project) return
+
             selectedProject.value = project
             showProjectDetail.value = true
+        }
+
+        const closeProjectDetail = () => {
+            showProjectDetail.value = false
+            selectedProject.value = null
         }
 
         const openGithub = (url) => {
@@ -108,7 +134,7 @@ export default {
             router.push('/about')
         }
 
-        // 工具方法（使用服務中的方法）
+        // 工具方法（直接使用服務）
         const getCategoryName = (category) => {
             return portfolioService.getCategoryName(category)
         }
@@ -129,68 +155,82 @@ export default {
             return portfolioService.formatDate(dateString)
         }
 
-        // 重新載入專案資料
-        const reloadProjects = async () => {
-            try {
-                await portfolioService.reloadProjects()
-                await loadProjects()
-                ElMessage.success('專案資料重新載入成功')
-            } catch (error) {
-                console.error('重新載入失敗:', error)
-                ElMessage.error('重新載入失敗')
-            }
-        }
-
         // 動畫效果
         const animateProjects = () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('project-animated')
-                    }
-                })
+            // 清除現有動畫
+            document.querySelectorAll('.project-item').forEach(el => {
+                el.classList.remove('project-animated')
             })
 
+            // 延遲後重新添加動畫
             setTimeout(() => {
-                document.querySelectorAll('.project-item').forEach(el => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('project-animated')
+                        }
+                    })
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                })
+
+                document.querySelectorAll('.project-item').forEach((el, index) => {
+                    el.style.animationDelay = `${index * 0.1}s`
                     observer.observe(el)
                 })
-            }, 100)
+            }, 50)
         }
 
         // 組件掛載
         onMounted(async () => {
             console.log('Portfolio page mounted')
 
-            // 載入專案資料
-            await loadProjects()
+            try {
+                // 只在初始載入時讀取資料
+                await loadProjects()
 
-            // 啟用動畫效果
-            animateProjects()
+                // 啟用動畫效果
+                setTimeout(() => {
+                    animateProjects()
+                }, 200)
+
+            } catch (error) {
+                console.error('頁面初始化失敗:', error)
+                ElMessage.error('頁面載入失敗')
+            }
         })
 
         return {
+            // 狀態
             activeFilter,
             showProjectDetail,
             selectedProject,
             loading,
-            projects,
+
+            // 數據
+            allProjects,
             filteredProjects,
             statistics,
-            loadProjects,
-            searchProjects,
+
+            // 方法
             handleFilterChange,
+            setFilter,
+            searchProjects,
             openProjectDetail,
+            closeProjectDetail,
             openGithub,
             openDemo,
             openEmail,
             navigateToAbout,
+
+            // 工具方法
             getCategoryName,
             getCategoryType,
             getStatusType,
             getStatusText,
             formatDate,
-            reloadProjects
+            animateProjects
         }
     }
 }

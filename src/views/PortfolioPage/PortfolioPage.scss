@@ -4,6 +4,30 @@
         max-width: 1400px;
         margin: 0 auto;
     }
+    // Loading States
+    .loading-container {
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+    .filter-loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 60px 20px;
+        color: #667eea;
+        font-size: 16px;
+
+        .el-icon {
+            font-size: 24px;
+        }
+    }
+
+    .empty-state {
+        padding: 80px 20px;
+        text-align: center;
+    }
     // Header Section
     .portfolio-header {
         text-align: center;
@@ -59,6 +83,17 @@
                 background-color: #667eea;
                 height: 3px;
             }
+        }
+    }
+    // Filter Summary
+    .filter-summary {
+        text-align: center;
+        margin: 30px 0 50px 0;
+
+        .summary-text {
+            font-size: 16px;
+            color: #666;
+            margin: 0;
         }
     }
     // Projects Grid

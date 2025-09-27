@@ -1,5 +1,4 @@
-﻿
-<template>
+﻿<template>
     <div class="app-portfolio">
         <div class="page-container">
             <!-- Header -->
@@ -13,7 +12,7 @@
             <!-- Filter Tabs -->
             <div class="portfolio-filter">
                 <el-tabs v-model="activeFilter"
-                         @tab-click="handleFilterChange"
+                         @tab-change	="handleFilterChange"
                          class="filter-tabs">
                     <el-tab-pane label="全部專案" name="all"></el-tab-pane>
                     <el-tab-pane label="網頁應用" name="web"></el-tab-pane>
@@ -23,10 +22,24 @@
                 </el-tabs>
             </div>
 
+            <!-- Loading State (只在初始載入時顯示) -->
+            <div v-if="loading" class="loading-container">
+                <el-skeleton :rows="8" animated />
+            </div>
+
+            <!-- Empty State -->
+            <div v-else-if="filteredProjects.length === 0" class="empty-state">
+                <el-empty description="此分類暫無專案">
+                    <el-button type="primary" @click="setFilter('all')">
+                        查看全部專案
+                    </el-button>
+                </el-empty>
+            </div>
+
             <!-- Projects Grid -->
-            <div class="projects-grid">
+            <div v-else class="projects-grid">
                 <div v-for="project in filteredProjects"
-                     :key="project.id"
+                     :key="`${project.id}-${activeFilter}`"
                      class="project-item"
                      @click="openProjectDetail(project)">
                     <el-card shadow="hover" class="project-card">
@@ -37,7 +50,6 @@
                                  loading="lazy" />
                             <div class="project-overlay">
                                 <div class="overlay-content">
-
                                     <el-button type="primary" circle>
                                         <el-icon><View /></el-icon>
                                     </el-button>
@@ -53,7 +65,6 @@
                                                @click.stop="openDemo(project.demo)">
                                         <el-icon><Monitor /></el-icon>
                                     </el-button>
-
                                 </div>
                             </div>
                         </div>
@@ -69,7 +80,7 @@
 
                             <p class="project-description">{{ project.description }}</p>
 
-                            <div class="project-features">
+                            <div class="project-features" v-if="project.features && project.features.length > 0">
                                 <h5>主要功能：</h5>
                                 <ul>
                                     <li v-for="feature in project.features.slice(0, 3)" :key="feature">
@@ -78,7 +89,7 @@
                                 </ul>
                             </div>
 
-                            <div class="project-tech">
+                            <div class="project-tech" v-if="project.technologies && project.technologies.length > 0">
                                 <el-tag v-for="tech in project.technologies.slice(0, 4)"
                                         :key="tech"
                                         size="small"
@@ -109,9 +120,16 @@
                 </div>
             </div>
 
-            <!-- Project Detail Modal -->
+            <!-- 篩選結果統計 -->
+            <div v-if="!loading" class="filter-summary">
+                <p class="summary-text">
+                    {{ activeFilter === 'all' ? '全部專案' : getCategoryName(activeFilter) }}：
+                    共 <strong>{{ filteredProjects.length }}</strong> 個專案
+                </p>
+            </div>
+
             <!-- Statistics Section -->
-            <section class="portfolio-stats">
+            <section v-if="!loading && statistics.length > 0" class="portfolio-stats">
                 <h2 class="section-title">專案統計</h2>
 
                 <el-row :gutter="30" class="stats-grid">
@@ -132,7 +150,7 @@
             </section>
 
             <!-- Contact CTA -->
-            <section class="contact-cta">
+            <section v-if="!loading" class="contact-cta">
                 <div class="cta-content">
                     <h2>有專案想要合作嗎？</h2>
                     <p>我很樂意討論您的專案需求，並提供專業的技術解決方案</p>
@@ -153,15 +171,16 @@
         </div>
     </div>
 
-
+    <!-- Project Detail Modal -->
     <el-dialog v-model="showProjectDetail"
                :title="selectedProject?.title"
                width="80%"
                top="5vh"
-               class="project-detail-dialog">
+               class="project-detail-dialog"
+               @closed="closeProjectDetail">
         <div v-if="selectedProject" class="project-detail">
             <!-- Project Images Gallery -->
-            <div class="project-gallery">
+            <div class="project-gallery" v-if="selectedProject.gallery && selectedProject.gallery.length > 0">
                 <el-carousel height="400px" indicator-position="outside">
                     <el-carousel-item v-for="(image, index) in selectedProject.gallery" :key="index">
                         <img :src="image" :alt="`${selectedProject.title} - 圖片 ${index + 1}`" />
@@ -175,18 +194,20 @@
                     <el-col :xs="24" :md="16">
                         <div class="project-info">
                             <h3>專案簡介</h3>
-                            <p class="project-full-description">{{ selectedProject.fullDescription }}</p>
+                            <p class="project-full-description">
+                                {{ selectedProject.fullDescription || selectedProject.description }}
+                            </p>
 
-                            <h3>主要功能</h3>
-                            <ul class="feature-list">
+                            <h3 v-if="selectedProject.features && selectedProject.features.length > 0">主要功能</h3>
+                            <ul class="feature-list" v-if="selectedProject.features && selectedProject.features.length > 0">
                                 <li v-for="feature in selectedProject.features" :key="feature">
                                     <el-icon><Check /></el-icon>
                                     {{ feature }}
                                 </li>
                             </ul>
 
-                            <h3>技術挑戰與解決方案</h3>
-                            <div class="challenges">
+                            <h3 v-if="selectedProject.challenges && selectedProject.challenges.length > 0">技術挑戰與解決方案</h3>
+                            <div class="challenges" v-if="selectedProject.challenges && selectedProject.challenges.length > 0">
                                 <div v-for="challenge in selectedProject.challenges"
                                      :key="challenge.title"
                                      class="challenge-item">
@@ -211,17 +232,17 @@
                                         {{ getStatusText(selectedProject.status) }}
                                     </el-tag>
                                 </div>
-                                <div class="meta-item">
+                                <div class="meta-item" v-if="selectedProject.duration">
                                     <label>開發時間：</label>
                                     <span>{{ selectedProject.duration }}</span>
                                 </div>
-                                <div class="meta-item">
+                                <div class="meta-item" v-if="selectedProject.teamSize">
                                     <label>團隊規模：</label>
                                     <span>{{ selectedProject.teamSize }}</span>
                                 </div>
                             </div>
 
-                            <div class="meta-section">
+                            <div class="meta-section" v-if="selectedProject.technologies && selectedProject.technologies.length > 0">
                                 <h4>使用技術</h4>
                                 <div class="tech-tags">
                                     <el-tag v-for="tech in selectedProject.technologies"
@@ -232,7 +253,7 @@
                                 </div>
                             </div>
 
-                            <div class="meta-section">
+                            <div class="meta-section" v-if="selectedProject.github || selectedProject.demo">
                                 <h4>相關連結</h4>
                                 <div class="project-links">
                                     <el-button v-if="selectedProject.github"
@@ -259,7 +280,7 @@
 
         <template #footer>
             <div class="dialog-footer">
-                <el-button @click="showProjectDetail = false">關閉</el-button>
+                <el-button @click="closeProjectDetail">關閉</el-button>
                 <el-button v-if="selectedProject?.demo"
                            type="primary"
                            @click="openDemo(selectedProject.demo)">
@@ -268,9 +289,7 @@
             </div>
         </template>
     </el-dialog>
-
 </template>
-
 
 <script src="./PortfolioPage.js"></script>
 <style type="text/scss" lang="scss">
