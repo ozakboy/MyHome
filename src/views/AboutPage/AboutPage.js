@@ -50,7 +50,7 @@ export default {
         // 工作經歷資料
         const experiences = ref([
             {
-                period: '2022 - 現在',
+                period: '2021 - 現在',
                 company: '自由接案',
                 position: '全棧系統工程師',
                 type: 'primary',
@@ -61,11 +61,11 @@ export default {
                     '設計並實現多個 Line Bot 與 Discord Bot 專案',
                     '協助客戶將系統架構微服務化，提升 40% 的系統效能'
                 ],
-                technologies: ['C#', '.NET Core', 'Vue.js', 'Docker', '微服務', 'Bot 開發']
+                technologies: ['C#', '.NET Core', 'Vue.js', 'MSSQL', 'Docker', '微服務', 'Bot 開發', 'Azure','AWS']
             },
             {
-                period: '2020 - 2022',
-                company: '科技股份有限公司',
+                period: '2020 - 2021',
+                company: '百家成投資有限公司',
                 position: '資深後端工程師',
                 type: 'success',
                 description: '負責公司核心產品的後端開發與架構設計，帶領團隊完成多項重要專案',
@@ -75,10 +75,10 @@ export default {
                     '建立自動化部署流程，縮短 50% 的部署時間',
                     '指導 3 名初級工程師，協助團隊技術成長'
                 ],
-                technologies: ['C#', '.NET Core', 'MSSQL', 'Redis', 'RabbitMQ', 'Azure']
+                technologies: ['C#', '.NET Core', 'MSSQL', 'Redis', 'Azure']
             },
             {
-                period: '2018 - 2020',
+                period: '2017 - 2019',
                 company: '軟體開發公司',
                 position: '後端工程師',
                 type: 'warning',
