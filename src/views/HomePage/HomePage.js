@@ -7,62 +7,62 @@ export default {
         // 主要服務項目
         const services = ref([
             {
-                icon: 'iconify hugeicons--user-circle',
+                icon: 'hugeicons:user-circle',
                 title: '個人客製化網頁設計',
                 description: '量身打造專屬於您的個人品牌網站，展現獨特風格與專業形象'
             },
             {
-                icon: 'iconify hugeicons--office-365',
+                icon: 'hugeicons:office-365',
                 title: '企業形象網站設計',
                 description: '提升企業專業形象，建立客戶信任，打造具有競爭力的線上門面'
             },
             {
-                icon: 'iconify hugeicons--message-01',
+                icon: 'hugeicons:message-01',
                 title: 'LINE 官方帳號建置',
                 description: '建立官方帳號，打造專屬的客戶溝通管道，提升品牌互動率'
             },
             {
-                icon: 'iconify hugeicons--bot',
+                icon: 'hugeicons:bot',
                 title: 'LINE 機器人建置',
                 description: '智能客服機器人，24小時自動回覆，提升客戶服務效率'
             },
             {
-                icon: 'iconify hugeicons--telegram',
+                icon: 'hugeicons:telegram',
                 title: 'Telegram 機器人建置',
                 description: '建置 Telegram 自動化機器人，拓展國際市場的溝通渠道'
             },
             {
-                icon: 'iconify hugeicons--facebook-01',
+                icon: 'hugeicons:facebook-01',
                 title: 'Facebook 粉專機器人',
                 description: '自動化管理粉絲專頁，即時回應訊息，提升社群經營效率'
             },
             {
-                icon: 'iconify hugeicons--search-01',
+                icon: 'hugeicons:search-01',
                 title: '網站 Google SEO 建置',
                 description: '專業SEO優化服務，提升網站搜尋排名，增加自然流量'
             },
             {
-                icon: 'iconify hugeicons--mobile-programming-01',
+                icon: 'hugeicons:mobile-programming-01',
                 title: 'RWD 響應式設計',
                 description: '完美適配所有裝置，確保在手機、平板、電腦都有最佳瀏覽體驗'
             },
             {
-                icon: 'iconify hugeicons--global',
+                icon: 'hugeicons:global',
                 title: '網域申請',
                 description: '協助申請專屬網域名稱，建立品牌識別度與專業形象'
             },
             {
-                icon: 'iconify hugeicons--api',
+                icon: 'hugeicons:api',
                 title: 'API 串接技術支援',
                 description: '整合第三方服務，串接金流、物流、CRM等各式系統'
             },
             {
-                icon: 'iconify hugeicons--server-01',
+                icon: 'hugeicons:server-stack-01',
                 title: '主機轉移服務',
                 description: '專業的主機搬遷服務，確保網站平穩遷移，不影響營運'
             },
             {
-                icon: 'iconify hugeicons--cloud',
+                icon: 'hugeicons:cloud',
                 title: '主機雲端託管',
                 description: '提供穩定可靠的雲端主機服務，確保網站高速運行'
             }
@@ -146,50 +146,30 @@ export default {
                 '.service-card, .after-service-card, .process-item'
             );
 
-            animatedElements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(el);
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(element);
             });
         };
 
-        // 平滑滾動
-        const initSmoothScroll = () => {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        };
-
-        // 處理按鈕點擊事件
+        // 處理按鈕點擊
         const handleConsultClick = () => {
+            // 這裡可以添加導航到諮詢頁面的邏輯
             console.log('諮詢按鈕被點擊');
-            // 可以打開聯絡表單或跳轉到聯絡頁面
-            // 範例：this.$router.push('/contact')
         };
 
         const handlePortfolioClick = () => {
-            console.log('查看作品按鈕被點擊');
-            // 跳轉到作品集頁面
-            // 範例：this.$router.push('/portfolio')
+            // 這裡可以添加導航到作品集頁面的邏輯
+            console.log('作品集按鈕被點擊');
         };
 
-        // 組件掛載時執行
+        // 組件掛載後初始化動畫
         onMounted(() => {
             initScrollAnimation();
-            initSmoothScroll();
         });
 
-        // 返回要在模板中使用的資料和方法
         return {
             services,
             afterServices,

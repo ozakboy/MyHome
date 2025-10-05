@@ -27,7 +27,7 @@
                 <div class="services-grid">
                     <div class="service-card" v-for="(service, index) in services" :key="index">
                         <div class="service-icon">
-                            <el-icon></el-icon>
+                            <Icon :icon="service.icon" />
                         </div>
                         <h3 class="service-title">{{ service.title }}</h3>
                         <p class="service-description">{{ service.description }}</p>
