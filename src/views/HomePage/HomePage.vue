@@ -1,172 +1,92 @@
 ﻿<template>
-  <div class="app-home">
-    <div class="page-container">
-      <!-- Hero Section -->
-      <section class="hero-section">
-        <div class="hero-content">
-          <div class="hero-text">
-            <h1 class="hero-title">
-              全棧系統工程師
-              <span class="highlight">韓滷</span>
-            </h1>
-            <p class="hero-subtitle">
-              專精於 C# .NET 後端開發、Vue.js 前端設計、微服務架構、高頻交易系統
-            </p>
-            <p class="hero-description">
-              具備完整的全棧開發能力，從前端設計到後端API，從資料庫管理到伺服器部署，
-              提供一站式的系統解決方案。
-            </p>
-            
-            <div class="hero-actions">
-              <el-button 
-                type="primary" 
-                size="large" 
-                @click="navigateToPortfolio"
-                class="action-button"
-              >
-                <el-icon><Folder /></el-icon>
-                查看作品集
-              </el-button>
-              
-              <el-button 
-                size="large" 
-                @click="navigateToAbout"
-                class="action-button secondary"
-              >
-                <el-icon><User /></el-icon>
-                了解更多
-              </el-button>
-            </div>
-          </div>
-          
-          <div class="hero-image">
-            <div class="avatar-container">
-              <img 
-                src="/images/profile/avatar.jpg" 
-                alt="韓滷 - 全棧系統工程師"
-                class="avatar-image"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Skills Section -->
-      <section class="skills-section">
-        <h2 class="section-title">核心技能</h2>
-        
-        <el-row :gutter="24" class="skills-grid">
-          <el-col :xs="24" :sm="12" :md="8" v-for="skill in skills" :key="skill.id">
-            <el-card class="skill-card" shadow="hover">
-              <div class="skill-content">
-                <div class="skill-icon">
-                  <el-icon :size="40" :color="skill.color">
-                    <component :is="skill.icon" />
-                  </el-icon>
+    <div class="app-home">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">全站式網頁設計解決方案</h1>
+                    <p class="hero-subtitle">嚴謹網站開發流程、質感網頁設計、程式流暢體驗，一站到位</p>
+                    <p class="hero-description">從網站洽詢、規劃、視覺設計、後台程式、網址、主機管理、SEO優化</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" @click="handleConsultClick">立即諮詢</button>
+                        <button class="btn btn-outline" @click="handlePortfolioClick">查看作品</button>
+                    </div>
                 </div>
-                <h3 class="skill-title">{{ skill.title }}</h3>
-                <p class="skill-description">{{ skill.description }}</p>
-                
-                <div class="skill-tags">
-                  <el-tag 
-                    v-for="tag in skill.tags" 
-                    :key="tag"
-                    size="small"
-                    class="skill-tag"
-                  >
-                    {{ tag }}
-                  </el-tag>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
-      </section>
-
-      <!-- Recent Articles Section -->
-
-      <!--<section class="articles-section">
-        <div class="section-header">
-          <h2 class="section-title">最新文章</h2>
-          <el-button 
-            type="text" 
-            @click="navigateToArticles"
-            class="view-all-button"
-          >
-            查看全部文章
-            <el-icon><ArrowRight /></el-icon>
-          </el-button>
-        </div>
-        
-        <el-row :gutter="24" class="articles-grid">
-          <el-col :xs="24" :sm="12" :md="8" v-for="article in recentArticles" :key="article.id">
-            <el-card class="article-card" shadow="hover" @click="navigateToArticle(article)">
-              <div class="article-content">
-                <div class="article-meta">
-                  <el-tag :type="getCategoryType(article.category)" size="small">
-                    {{ article.categoryName }}
-                  </el-tag>
-                  <span class="article-date">{{ formatDate(article.date) }}</span>
-                </div>
-                
-                <h3 class="article-title">{{ article.title }}</h3>
-                <p class="article-excerpt">{{ article.excerpt }}</p>
-                
-                <div class="article-footer">
-                  <div class="article-tags">
-                    <el-tag 
-                      v-for="tag in article.tags.slice(0, 2)" 
-                      :key="tag"
-                      size="small"
-                      effect="plain"
-                    >
-                      {{ tag }}
-                    </el-tag>
-                  </div>
-                  
-                  <div class="read-more">
-                    <el-icon><View /></el-icon>
-                    閱讀更多
-                  </div>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
-      </section>-->
-
-      <!-- Contact Section -->
-      <section class="contact-section">
-        <h2 class="section-title">聯繫方式</h2>
-        
-        <div class="contact-content">
-          <div class="contact-info">
-            <div class="contact-item">
-              <el-icon size="24" color="#667eea"><Message /></el-icon>
-              <div class="contact-details">
-                <h3>電子信箱</h3>
-                <p>awc0450056@gmail.com</p>
-              </div>
             </div>
-            
-            <div class="contact-item">
-              <el-icon size="24" color="#667eea"><ChatDotRound /></el-icon>
-              <div class="contact-details">
-                <h3>Telegram</h3>
-                <a href="https://telegram.me/minksaki64">@minksaki64</a>
-              </div>
+            <div class="hero-background"></div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">專業服務項目</h2>
+                    <p class="section-subtitle">提供完整的網站開發與數位行銷解決方案</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card" v-for="(service, index) in services" :key="index">
+                        <div class="service-icon">
+                            <el-icon></el-icon>
+                        </div>
+                        <h3 class="service-title">{{ service.title }}</h3>
+                        <p class="service-description">{{ service.description }}</p>
+                    </div>
+                </div>
             </div>
-          </div>
-          
-        </div>
-      </section>
+        </section>
+
+        <!-- After Service Section -->
+        <section class="after-service-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">網站完成後的貼心服務</h2>
+                    <p class="section-subtitle">持續為您的網站保駕護航</p>
+                </div>
+
+                <div class="after-services-grid">
+                    <div class="after-service-card" v-for="(service, index) in afterServices" :key="index">
+                        <div class="after-service-number">{{ index + 1 }}</div>
+                        <h3 class="after-service-title">{{ service.title }}</h3>
+                        <p class="after-service-description">{{ service.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">嚴謹的開發流程</h2>
+                    <p class="section-subtitle">每個環節都精心規劃，確保專案順利進行</p>
+                </div>
+
+                <div class="process-timeline">
+                    <div class="process-item" v-for="(step, index) in processSteps" :key="index">
+                        <div class="process-dot"></div>
+                        <div class="process-content">
+                            <h3 class="process-title">{{ step.title }}</h3>
+                            <p class="process-description">{{ step.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">準備好打造您的專屬網站了嗎？</h2>
+                    <p class="cta-description">立即聯繫我們，讓專業團隊為您量身打造完美解決方案</p>
+                    <button class="btn btn-light" @click="handleConsultClick">免費諮詢</button>
+                </div>
+            </div>
+        </section>
     </div>
-  </div>
 </template>
 
-
-
 <script src="./HomePage.js"></script>
-<style type="text/scss" lang="scss">
-    @use './HomePage.scss';
-</style>
+
+<style lang="scss" src="./HomePage.scss"></style>

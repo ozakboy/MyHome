@@ -1,396 +1,444 @@
-﻿.app-home {
-    .page-container {
-        padding: 60px 40px;
+﻿// 樣式隔離：所有樣式都在 app-home 內
+.app-home {
+    // 全局變數 - 優化配色確保可讀性
+    $primary-color: #4f46e5;
+    $secondary-color: #7c3aed;
+    $dark-color: #0f172a;
+    $light-color: #f8fafc;
+    $text-color: #1e293b;
+    $text-secondary: #475569;
+    $border-radius: 16px;
+    $transition: all 0.3s ease;
+
+    // 重置樣式
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
-    // Hero Section
+
+    font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: $text-color;
+    line-height: 1.6;
+    // Iconify 圖標樣式
+    .iconify {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        font-size: 36px;
+    }
+    // 通用容器
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    // 區塊標題
+    .section-header {
+        text-align: center;
+        margin-bottom: 64px;
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: $dark-color;
+            margin-bottom: 16px;
+
+            @media (max-width: 768px) {
+                font-size: 32px;
+            }
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: $text-secondary;
+            font-weight: 500;
+        }
+    }
+    // 按鈕樣式 - 確保文字清晰可見
+    .btn {
+        padding: 14px 32px;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: $transition;
+
+        &.btn-primary {
+            background: linear-gradient(135deg, $primary-color, $secondary-color);
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3);
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 15px 40px rgba(79, 70, 229, 0.4);
+                background: linear-gradient(135deg, #4338ca, #6d28d9);
+            }
+        }
+
+        &.btn-outline {
+            background: rgba(255, 255, 255, 0.95);
+            color: $primary-color;
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            font-weight: 700;
+
+            &:hover {
+                background: #ffffff;
+                border-color: #ffffff;
+                transform: translateY(-2px);
+            }
+        }
+
+        &.btn-light {
+            background: #ffffff;
+            color: $primary-color;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            font-weight: 700;
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+    // Hero Section - 確保白色文字清晰可見
     .hero-section {
-        margin-bottom: 80px;
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
 
         .hero-content {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            min-height: 500px;
-
-            .hero-text {
-                flex: 1;
-
-                .hero-title {
-                    font-size: 3.5rem;
-                    font-weight: 800;
-                    margin-bottom: 20px;
-                    line-height: 1.2;
-                    color: #2c3e50;
-
-                    .highlight {
-                        background: linear-gradient(135deg, #667eea, #764ba2);
-                        -webkit-background-clip: text;
-                        -webkit-text-fill-color: transparent;
-                        background-clip: text;
-                    }
-                }
-
-                .hero-subtitle {
-                    font-size: 1.5rem;
-                    color: #667eea;
-                    margin-bottom: 20px;
-                    font-weight: 600;
-                }
-
-                .hero-description {
-                    font-size: 1.1rem;
-                    color: #666;
-                    line-height: 1.8;
-                    margin-bottom: 40px;
-                }
-
-                .hero-actions {
-                    display: flex;
-                    gap: 20px;
-                    flex-wrap: wrap;
-
-                    .action-button {
-                        padding: 12px 30px;
-                        font-size: 16px;
-                        border-radius: 25px;
-                        transition: all 0.3s ease;
-
-                        &:hover {
-                            transform: translateY(-2px);
-                            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-                        }
-
-                        &.secondary {
-                            border: 2px solid #667eea;
-                            color: #667eea;
-                            background: transparent;
-
-                            &:hover {
-                                background: #667eea;
-                                color: white;
-                            }
-                        }
-                    }
-                }
-            }
-
-            .hero-image {
-                flex: 0 0 300px;
-
-                .avatar-container {
-                    position: relative;
-                    width: 300px;
-                    height: 300px;
-                    border-radius: 50%;
-                    overflow: hidden;
-                    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
-                    transition: transform 0.3s ease;
-
-                    &:hover {
-                        transform: scale(1.05);
-                    }
-
-                    .avatar-image {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
-                }
-            }
-        }
-    }
-    // Skills Section
-    .skills-section {
-        margin-bottom: 80px;
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
+            position: relative;
+            z-index: 1;
             text-align: center;
-            margin-bottom: 50px;
-            color: #2c3e50;
+            color: #ffffff;
+            padding: 80px 0;
         }
 
-        .skills-grid {
-            .skill-card {
-                margin-bottom: 24px;
-                border-radius: 16px;
-                border: none;
-                transition: all 0.3s ease;
+        .hero-title {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.8s ease;
+            color: #ffffff;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
 
-                &:hover {
-                    transform: translateY(-8px);
-                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-                }
-
-                .skill-content {
-                    padding: 30px 20px;
-                    text-align: center;
-
-                    .skill-icon {
-                        margin-bottom: 20px;
-                    }
-
-                    .skill-title {
-                        font-size: 1.3rem;
-                        font-weight: 600;
-                        margin-bottom: 15px;
-                        color: #2c3e50;
-                    }
-
-                    .skill-description {
-                        color: #666;
-                        line-height: 1.6;
-                        margin-bottom: 20px;
-                    }
-
-                    .skill-tags {
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: center;
-                        gap: 8px;
-
-                        .skill-tag {
-                            background: rgba(102, 126, 234, 0.1);
-                            color: #667eea;
-                            border: none;
-                        }
-                    }
-                }
+            @media (max-width: 768px) {
+                font-size: 36px;
             }
         }
-    }
-    // Articles Section
-    .articles-section {
-        margin-bottom: 80px;
 
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 50px;
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #ffffff;
+            animation: fadeInUp 1s ease;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
 
-            .section-title {
-                font-size: 2.5rem;
-                font-weight: 700;
-                color: #2c3e50;
-                margin: 0;
+            @media (max-width: 768px) {
+                font-size: 18px;
             }
+        }
 
-            .view-all-button {
+        .hero-description {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 40px;
+            animation: fadeInUp 1.2s ease;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+            @media (max-width: 768px) {
                 font-size: 16px;
-                color: #667eea;
-
-                &:hover {
-                    color: #764ba2;
-                }
             }
         }
 
-        .articles-grid {
-            .article-card {
-                margin-bottom: 24px;
-                border-radius: 16px;
-                border: none;
-                cursor: pointer;
-                transition: all 0.3s ease;
-
-                &:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-                }
-
-                .article-content {
-                    padding: 24px;
-
-                    .article-meta {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        margin-bottom: 15px;
-
-                        .article-date {
-                            color: #999;
-                            font-size: 14px;
-                        }
-                    }
-
-                    .article-title {
-                        font-size: 1.2rem;
-                        font-weight: 600;
-                        margin-bottom: 12px;
-                        color: #2c3e50;
-                        line-height: 1.4;
-                    }
-
-                    .article-excerpt {
-                        color: #666;
-                        line-height: 1.6;
-                        margin-bottom: 20px;
-                        display: -webkit-box;
-                        -webkit-line-clamp: 3;
-                        -webkit-box-orient: vertical;
-                        overflow: hidden;
-                    }
-
-                    .article-footer {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-
-                        .article-tags {
-                            display: flex;
-                            gap: 8px;
-                            flex-wrap: wrap;
-                        }
-
-                        .read-more {
-                            display: flex;
-                            align-items: center;
-                            gap: 5px;
-                            color: #667eea;
-                            font-size: 14px;
-                            font-weight: 500;
-                        }
-                    }
-                }
-            }
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.4s ease;
         }
     }
-    // Contact Section
-    .contact-section {
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 50px;
-            color: #2c3e50;
-        }
+    // Services Section - 確保文字對比清晰
+    .services-section {
+        padding: 100px 0;
+        background: #ffffff;
 
-        .contact-content {
+        .services-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
 
-            .contact-info {
-                .contact-item {
-                    display: flex;
-                    align-items: center;
-                    gap: 20px;
-                    margin-bottom: 30px;
-                    padding: 20px;
-                    background: rgba(102, 126, 234, 0.05);
-                    border-radius: 12px;
-                    transition: background 0.3s ease;
-
-                    &:hover {
-                        background: rgba(102, 126, 234, 0.1);
-                    }
-
-                    .contact-details {
-                        h3 {
-                            margin: 0 0 5px 0;
-                            font-size: 1.1rem;
-                            font-weight: 600;
-                            color: #2c3e50;
-                        }
-
-                        p {
-                            margin: 0;
-                            color: #666;
-                            font-size: 14px;
-                        }
-                    }
-                }
-            }
-
-            .contact-form {
-                background: rgba(255, 255, 255, 0.8);
-                padding: 30px;
-                border-radius: 16px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-
-                .submit-button {
-                    width: 100%;
-                    padding: 12px;
-                    border-radius: 8px;
-                }
-            }
-        }
-    }
-}
-
-// 響應式設計
-@media (max-width: 968px) {
-    .app-home {
-        .page-container {
-            padding: 40px 20px;
-        }
-
-        .hero-section {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 40px;
-
-                .hero-text {
-                    .hero-title {
-                        font-size: 2.5rem;
-                    }
-
-                    .hero-actions {
-                        justify-content: center;
-                    }
-                }
-
-                .hero-image {
-                    flex: 0 0 250px;
-
-                    .avatar-container {
-                        width: 250px;
-                        height: 250px;
-                    }
-                }
-            }
-        }
-
-        .contact-section {
-            .contact-content {
+            @media (max-width: 768px) {
                 grid-template-columns: 1fr;
-                gap: 40px;
+            }
+        }
+
+        .service-card {
+            background: #ffffff;
+            padding: 40px 32px;
+            border-radius: $border-radius;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: $transition;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+
+            &:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+                border-color: $primary-color;
+
+                .service-icon {
+                    transform: scale(1.1);
+                }
+            }
+
+            .service-icon {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 24px;
+                background: linear-gradient(135deg, $primary-color, $secondary-color);
+                border-radius: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: $transition;
+
+                .iconify {
+                    color: #ffffff;
+                    font-size: 40px;
+                }
+            }
+
+            .service-title {
+                font-size: 20px;
+                font-weight: 700;
+                color: $dark-color;
+                margin-bottom: 12px;
+            }
+
+            .service-description {
+                font-size: 15px;
+                color: $text-secondary;
+                line-height: 1.7;
+                font-weight: 400;
             }
         }
     }
-}
+    // After Service Section - 優化對比度
+    .after-service-section {
+        padding: 100px 0;
+        background: $light-color;
 
-@media (max-width: 768px) {
-    .app-home {
-        .hero-section {
-            .hero-content {
-                .hero-text {
-                    .hero-title {
-                        font-size: 2rem;
-                    }
+        .after-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
 
-                    .hero-subtitle {
-                        font-size: 1.2rem;
-                    }
+            @media (max-width: 768px) {
+                grid-template-columns: 1fr;
+            }
+        }
 
-                    .hero-actions {
-                        flex-direction: column;
-                        align-items: center;
+        .after-service-card {
+            background: #ffffff;
+            padding: 32px;
+            border-radius: $border-radius;
+            border-left: 4px solid $primary-color;
+            transition: $transition;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 
-                        .action-button {
-                            width: 200px;
-                        }
-                    }
+            &:hover {
+                transform: translateX(8px);
+                box-shadow: 0 8px 30px rgba(79, 70, 229, 0.15);
+            }
+
+            .after-service-number {
+                width: 40px;
+                height: 40px;
+                background: $primary-color;
+                color: #ffffff;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                font-size: 18px;
+                margin-bottom: 16px;
+            }
+
+            .after-service-title {
+                font-size: 20px;
+                font-weight: 700;
+                color: $dark-color;
+                margin-bottom: 12px;
+            }
+
+            .after-service-description {
+                font-size: 15px;
+                color: $text-secondary;
+                line-height: 1.7;
+                font-weight: 400;
+            }
+        }
+    }
+    // Process Section - 確保文字清晰
+    .process-section {
+        padding: 100px 0;
+        background: #ffffff;
+
+        .process-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 20px;
+                top: 0;
+                bottom: 0;
+                width: 3px;
+                background: linear-gradient(180deg, $primary-color, $secondary-color);
+
+                @media (max-width: 768px) {
+                    left: 12px;
                 }
             }
         }
 
-        .section-title {
-            font-size: 2rem !important;
+        .process-item {
+            position: relative;
+            padding-left: 80px;
+            padding-bottom: 60px;
+
+            @media (max-width: 768px) {
+                padding-left: 60px;
+            }
+
+            &:last-child {
+                padding-bottom: 0;
+            }
+
+            .process-dot {
+                position: absolute;
+                left: 10px;
+                top: 8px;
+                width: 20px;
+                height: 20px;
+                background: #ffffff;
+                border: 4px solid $primary-color;
+                border-radius: 50%;
+                box-shadow: 0 0 0 8px rgba(79, 70, 229, 0.1);
+
+                @media (max-width: 768px) {
+                    left: 2px;
+                }
+            }
+
+            .process-content {
+                background: #ffffff;
+                padding: 24px;
+                border-radius: $border-radius;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+                border: 1px solid #e2e8f0;
+            }
+
+            .process-title {
+                font-size: 20px;
+                font-weight: 700;
+                color: $dark-color;
+                margin-bottom: 8px;
+            }
+
+            .process-description {
+                font-size: 15px;
+                color: $text-secondary;
+                font-weight: 400;
+            }
+        }
+    }
+    // CTA Section - 確保白色文字清晰
+    .cta-section {
+        padding: 100px 0;
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+        }
+
+        .cta-content {
+            color: #ffffff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #ffffff;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+
+            @media (max-width: 768px) {
+                font-size: 32px;
+            }
+        }
+
+        .cta-description {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    }
+    // 動畫
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-20px);
         }
     }
 }

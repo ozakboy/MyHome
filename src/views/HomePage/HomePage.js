@@ -1,219 +1,201 @@
-﻿import { ref, reactive, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
+﻿import { ref, onMounted } from 'vue';
 
 export default {
-    name: 'HomePage',
+    name: 'Home',
 
     setup() {
-        const router = useRouter()
-
-        // 技能資料
-        const skills = ref([
+        // 主要服務項目
+        const services = ref([
             {
-                id: 1,
-                title: '後端開發',
-                description: '專精於 C# .NET 開發，具備豐富的 API 設計與微服務架構經驗',
-                icon: 'Service',
-                color: '#667eea',
-                tags: ['C#', '.NET Core', 'Web API', '微服務', 'MSSQL', 'Redis']
+                icon: 'iconify hugeicons--user-circle',
+                title: '個人客製化網頁設計',
+                description: '量身打造專屬於您的個人品牌網站，展現獨特風格與專業形象'
             },
             {
-                id: 2,
-                title: '前端開發',
-                description: '熟練使用 Vue.js 框架，打造現代化響應式網頁應用程式',
-                icon: 'Monitor',
-                color: '#f093fb',
-                tags: ['Vue.js', 'HTML5', 'CSS3', 'JavaScript', 'SCSS', 'Element Plus']
+                icon: 'iconify hugeicons--office-365',
+                title: '企業形象網站設計',
+                description: '提升企業專業形象，建立客戶信任，打造具有競爭力的線上門面'
             },
             {
-                id: 3,
-                title: '系統架構',
-                description: '具備完整的系統設計能力，從需求分析到部署上線一條龍服務',
-                icon: 'Setting',
-                color: '#4facfe',
-                tags: ['系統設計', '資料庫設計', 'Docker', 'CI/CD', '雲端部署']
+                icon: 'iconify hugeicons--message-01',
+                title: 'LINE 官方帳號建置',
+                description: '建立官方帳號，打造專屬的客戶溝通管道，提升品牌互動率'
             },
             {
-                id: 4,
-                title: '高頻交易',
-                description: '開發期貨與股票高頻交易系統，處理即時資料與交易執行',
-                icon: 'DataAnalysis',
-                color: '#43e97b',
-                tags: ['高頻交易', '期貨', '股票', '即時系統', '量化交易']
+                icon: 'iconify hugeicons--bot',
+                title: 'LINE 機器人建置',
+                description: '智能客服機器人，24小時自動回覆，提升客戶服務效率'
             },
             {
-                id: 5,
-                title: 'Bot 開發',
-                description: '開發 Line Bot、Discord Bot、Telegram Bot 等聊天機器人',
-                icon: 'Connection',
-                color: '#fa709a',
-                tags: ['Line Bot', 'Discord Bot', 'Telegram Bot', 'Webhook', '自動化']
+                icon: 'iconify hugeicons--telegram',
+                title: 'Telegram 機器人建置',
+                description: '建置 Telegram 自動化機器人，拓展國際市場的溝通渠道'
             },
             {
-                id: 6,
-                title: '專案管理',
-                description: '具備專案開發規劃與流程設計能力，確保專案順利交付',
-                icon: 'Document',
-                color: '#ffd700',
-                tags: ['專案規劃', '流程設計', 'Scrum', '團隊協作', '需求分析']
+                icon: 'iconify hugeicons--facebook-01',
+                title: 'Facebook 粉專機器人',
+                description: '自動化管理粉絲專頁，即時回應訊息，提升社群經營效率'
+            },
+            {
+                icon: 'iconify hugeicons--search-01',
+                title: '網站 Google SEO 建置',
+                description: '專業SEO優化服務，提升網站搜尋排名，增加自然流量'
+            },
+            {
+                icon: 'iconify hugeicons--mobile-programming-01',
+                title: 'RWD 響應式設計',
+                description: '完美適配所有裝置，確保在手機、平板、電腦都有最佳瀏覽體驗'
+            },
+            {
+                icon: 'iconify hugeicons--global',
+                title: '網域申請',
+                description: '協助申請專屬網域名稱，建立品牌識別度與專業形象'
+            },
+            {
+                icon: 'iconify hugeicons--api',
+                title: 'API 串接技術支援',
+                description: '整合第三方服務，串接金流、物流、CRM等各式系統'
+            },
+            {
+                icon: 'iconify hugeicons--server-01',
+                title: '主機轉移服務',
+                description: '專業的主機搬遷服務，確保網站平穩遷移，不影響營運'
+            },
+            {
+                icon: 'iconify hugeicons--cloud',
+                title: '主機雲端託管',
+                description: '提供穩定可靠的雲端主機服務，確保網站高速運行'
             }
-        ])
+        ]);
 
-        // 最新文章資料
-        const recentArticles = ref([
+        // 後續服務項目
+        const afterServices = ref([
             {
-                id: 1,
-                title: 'Vue 3 組合式 API 深度解析',
-                excerpt: '深入探討 Vue 3 組合式 API 的優勢與實際應用場景，讓你的開發更加高效...',
-                category: 'tech',
-                categoryName: '技術分享',
-                date: '2024-01-15',
-                tags: ['Vue.js', 'JavaScript', '前端開發'],
-                slug: 'vue3-composition-api-deep-dive'
+                title: 'SEO 優化服務',
+                description: '持續優化網站SEO，定期分析關鍵字排名，提升搜尋引擎能見度，為網站帶來更多自然流量'
             },
             {
-                id: 2,
-                title: 'C# .NET 微服務架構設計實戰',
-                excerpt: '從零開始設計一個完整的微服務架構，包含服務發現、負載均衡等核心概念...',
-                category: 'experience',
-                categoryName: '開發心得',
-                date: '2024-01-12',
-                tags: ['C#', '.NET', '微服務', '架構設計'],
-                slug: 'dotnet-microservices-architecture'
+                title: '系統維護與更新',
+                description: '定期系統檢測、安全性更新、功能優化，確保網站穩定運行，提供最佳使用體驗'
             },
             {
-                id: 3,
-                title: '高頻交易系統開發經驗分享',
-                excerpt: '分享開發期貨高頻交易系統的經驗，包含效能優化、風險控制等關鍵要素...',
-                category: 'tutorial',
-                categoryName: '教學文章',
-                date: '2024-01-10',
-                tags: ['高頻交易', '期貨', '效能優化'],
-                slug: 'high-frequency-trading-system'
+                title: '後台影音教育訓練',
+                description: '提供完整的後台操作教學影片，讓您輕鬆上手網站管理，隨時更新內容無需擔心'
+            },
+            {
+                title: 'API 文件產出與管理',
+                description: '提供完整的API技術文件，方便後續系統串接與擴充，確保系統持續成長'
             }
-        ])
+        ]);
 
-        // 聯繫表單資料
-        const contactData = reactive({
-            name: '',
-            email: '',
-            message: ''
-        })
-
-        const contactForm = ref(null)
-        const isSubmitting = ref(false)
-
-        // 導航方法
-        const navigateToPortfolio = () => {
-            router.push('/portfolio')
-        }
-
-        const navigateToAbout = () => {
-            router.push('/about')
-        }
-
-        const navigateToArticles = () => {
-            router.push('/articles')
-        }
-
-        const navigateToArticle = (article) => {
-            router.push(`/article/${article.category}/${article.slug}`)
-        }
-
-        // 工具方法
-        const getCategoryType = (category) => {
-            const types = {
-                tech: 'primary',
-                experience: 'success',
-                tutorial: 'warning',
-                news: 'info'
+        // 開發流程
+        const processSteps = ref([
+            {
+                title: '網站需求洽詢',
+                description: '深入了解您的需求與目標，提供專業建議與完整規劃'
+            },
+            {
+                title: '網站規劃與報價',
+                description: '制定詳細的專案計劃、功能規格與時程，提供透明合理的報價'
+            },
+            {
+                title: '視覺設計與確認',
+                description: '打造符合品牌形象的視覺設計，確保每個細節都完美呈現'
+            },
+            {
+                title: '前後台程式開發',
+                description: '採用最新技術開發，確保程式碼品質與系統效能'
+            },
+            {
+                title: '網址與主機設定',
+                description: '協助申請網域、設定主機環境，確保網站穩定上線'
+            },
+            {
+                title: 'SEO 優化設定',
+                description: '完整的SEO設定，讓網站在搜尋引擎中獲得更好的排名'
+            },
+            {
+                title: '測試與上線',
+                description: '嚴格測試各項功能，確保無誤後正式上線'
+            },
+            {
+                title: '教育訓練與交接',
+                description: '提供完整的操作教學，確保您能輕鬆管理網站'
             }
-            return types[category] || 'info'
-        }
+        ]);
 
-        const formatDate = (dateString) => {
-            const date = new Date(dateString)
-            return date.toLocaleDateString('zh-TW', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            })
-        }
+        // 初始化滾動動畫
+        const initScrollAnimation = () => {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    });
+                },
+                {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -100px 0px'
+                }
+            );
 
-        // 提交聯繫表單
-        const submitContact = async () => {
-            if (!contactData.name || !contactData.email || !contactData.message) {
-                ElMessage.warning('請填寫完整資訊')
-                return
-            }
+            // 觀察所有需要動畫的元素
+            const animatedElements = document.querySelectorAll(
+                '.service-card, .after-service-card, .process-item'
+            );
 
-            // Email 格式驗證
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-            if (!emailRegex.test(contactData.email)) {
-                ElMessage.error('請輸入有效的電子郵件')
-                return
-            }
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        };
 
-            isSubmitting.value = true
-
-            try {
-                // 模擬發送請求
-                await new Promise(resolve => setTimeout(resolve, 2000))
-
-                ElMessage.success('訊息發送成功！我會盡快回覆您')
-
-                // 清空表單
-                contactData.name = ''
-                contactData.email = ''
-                contactData.message = ''
-
-            } catch (error) {
-                ElMessage.error('發送失敗，請稍後再試')
-                console.error('Contact form error:', error)
-            } finally {
-                isSubmitting.value = false
-            }
-        }
-
-        // 頁面滾動效果
-        const handleScroll = () => {
-            const scrolled = window.scrollY > 100
-            document.body.classList.toggle('scrolled', scrolled)
-        }
-
-        // 組件掛載
-        onMounted(() => {
-            console.log('Home page mounted')
-            window.addEventListener('scroll', handleScroll)
-
-            // 添加進入動畫
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-in')
+        // 平滑滾動
+        const initSmoothScroll = () => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
                     }
-                })
-            })
+                });
+            });
+        };
 
-            document.querySelectorAll('.skill-card, .article-card').forEach(el => {
-                observer.observe(el)
-            })
-        })
+        // 處理按鈕點擊事件
+        const handleConsultClick = () => {
+            console.log('諮詢按鈕被點擊');
+            // 可以打開聯絡表單或跳轉到聯絡頁面
+            // 範例：this.$router.push('/contact')
+        };
 
+        const handlePortfolioClick = () => {
+            console.log('查看作品按鈕被點擊');
+            // 跳轉到作品集頁面
+            // 範例：this.$router.push('/portfolio')
+        };
+
+        // 組件掛載時執行
+        onMounted(() => {
+            initScrollAnimation();
+            initSmoothScroll();
+        });
+
+        // 返回要在模板中使用的資料和方法
         return {
-            skills,
-            recentArticles,
-            contactData,
-            contactForm,
-            isSubmitting,
-            navigateToPortfolio,
-            navigateToAbout,
-            navigateToArticles,
-            navigateToArticle,
-            getCategoryType,
-            formatDate,
-            submitContact
-        }
+            services,
+            afterServices,
+            processSteps,
+            handleConsultClick,
+            handlePortfolioClick
+        };
     }
-}
+};
