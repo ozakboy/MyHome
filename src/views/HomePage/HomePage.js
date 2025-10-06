@@ -1,9 +1,11 @@
 ﻿import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router'
 
 export default {
-    name: 'Home',
+    name: 'HomePage',
 
     setup() {
+        const router = useRouter()
         // 主要服務項目
         const services = ref([
             {
@@ -156,13 +158,14 @@ export default {
 
         // 處理按鈕點擊
         const handleConsultClick = () => {
-            // 這裡可以添加導航到諮詢頁面的邏輯
             console.log('諮詢按鈕被點擊');
+            window.open("https://line.me/ti/p/llWJZ4iuiJ", "mozillaTab");
         };
 
         const handlePortfolioClick = () => {
             // 這裡可以添加導航到作品集頁面的邏輯
             console.log('作品集按鈕被點擊');
+            router.push('/portfolio')
         };
 
         // 組件掛載後初始化動畫
