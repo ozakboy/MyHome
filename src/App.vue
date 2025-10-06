@@ -20,23 +20,23 @@
                              @select="handleSelect"
                              :ellipsis="screenWidth <= 1280 && screenWidth > 720">
                         <el-menu-item index="/" route="/">
-                            <el-icon><House /></el-icon>
+                            <el-icon><Home01 /></el-icon>
                             <span>首頁</span>
                         </el-menu-item>
 
                         <el-menu-item index="/about" route="/about">
-                            <el-icon><User /></el-icon>
+                            <el-icon><UserCircle /></el-icon>
                             <span>關於我</span>
                         </el-menu-item>
 
                         <el-menu-item index="/portfolio" route="/portfolio">
-                            <el-icon><Folder /></el-icon>
+                            <el-icon><Folder01 /></el-icon>
                             <span>作品集</span>
                         </el-menu-item>
 
                         <!--<el-sub-menu index="/articles">
                             <template #title>
-                                <el-icon><Document /></el-icon>
+                                <el-icon><FileScript /></el-icon>
                                 <span>專欄文章</span>
                             </template>
 
@@ -67,17 +67,30 @@
         <footer class="app-footer">
             <div class="footer-content">
                 <div class="contact-info">
-                    <p>
-                        <el-icon><Message /></el-icon>
-                        信箱: awc0450056@gmail.com
-                    </p>
-                    <p>
-                        <el-icon><ChatDotRound /></el-icon>
-                        Telegram:  <a href="https://telegram.me/minksaki64">@minksaki64</a>
-                    </p>
+                    <span class="contact-label">聯絡方式:</span>
+                    <div class="contact-icons">
+                        <a href="mailto:awc0450056@gmail.com"
+                           class="contact-icon"
+                           title="Email: awc0450056@gmail.com"
+                           target="_blank">
+                            <el-icon :size="24"><MailSend01 /></el-icon>
+                        </a>
+                        <a href="https://telegram.me/minksaki64"
+                           class="contact-icon"
+                           title="Telegram: @minksaki64"
+                           target="_blank">
+                            <el-icon :size="24"><Telegram /></el-icon>
+                        </a>
+                        <a href="https://line.me/ti/p/llWJZ4iuiJ"
+                           class="contact-icon"
+                           title="Line"
+                           target="_blank">
+                            <el-icon :size="24"><Message01 /></el-icon>
+                        </a>
+                    </div>
                 </div>
                 <div class="copyright">
-                    <p>&copy; 2024 全棧系統工程師 韓滷. All rights reserved.</p>
+                    <p>&copy; 2025 全棧系統工程師 韓滷. All rights reserved.</p>
                 </div>
             </div>
         </footer>

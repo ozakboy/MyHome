@@ -1,5 +1,9 @@
 ﻿// src/App.scss - 響應式導航選單樣式
 
+body{
+    margin : 0px !important;
+}
+
 .app-main {
     // Header 樣式
     .app-header {
@@ -91,7 +95,7 @@
             }
         }
     }
-    // 主要內容和頁腳樣式保持不變
+    // 主要內容區域
     .app-main-content {
         flex: 1;
 
@@ -105,7 +109,7 @@
             backdrop-filter: blur(10px);
         }
     }
-
+    // Footer 樣式
     .app-footer {
         background: rgba(0, 0, 0, 0.8);
         color: white;
@@ -124,19 +128,45 @@
 
             .contact-info {
                 display: flex;
-                gap: 30px;
-                flex-wrap: wrap;
+                align-items: center;
+                gap: 16px;
 
-                p {
-                    margin: 0;
+                .contact-label {
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: #fff;
+                }
+
+                .contact-icons {
                     display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    opacity: 0.9;
-                    transition: opacity 0.3s ease;
+                    gap: 12px;
 
-                    &:hover {
-                        opacity: 1;
+                    .contact-icon {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        background: linear-gradient(135deg, #667eea, #764ba2);
+                        color: #fff;
+                        transition: all 0.3s ease;
+                        text-decoration: none;
+
+                        &:hover {
+                            transform: translateY(-3px);
+                            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+                        }
+
+                        &:active {
+                            transform: translateY(-1px);
+                        }
+
+                        .el-icon {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
                     }
                 }
             }
@@ -161,7 +191,7 @@
             .header-container {
                 .header-nav {
                     .nav-menu {
-                        // 強制顯示所有選單項目，不使用省略號
+                        // 強制顯示所有選單項目,不使用省略號
                         .el-menu--horizontal {
                             .el-menu-item,
                             .el-sub-menu {
@@ -284,6 +314,15 @@
                     flex-direction: column;
                     gap: 12px;
                     align-items: center;
+
+                    .contact-icons {
+                        gap: 16px;
+
+                        .contact-icon {
+                            width: 44px;
+                            height: 44px;
+                        }
+                    }
                 }
             }
         }
@@ -325,6 +364,33 @@
                                 display: none; // 超小螢幕只顯示圖標
                             }
                         }
+                    }
+                }
+            }
+        }
+
+        .app-footer {
+            padding: 24px 0;
+
+            .footer-content {
+                .contact-info {
+                    .contact-label {
+                        font-size: 14px;
+                    }
+
+                    .contact-icons {
+                        gap: 12px;
+
+                        .contact-icon {
+                            width: 40px;
+                            height: 40px;
+                        }
+                    }
+                }
+
+                .copyright {
+                    p {
+                        font-size: 12px;
                     }
                 }
             }
