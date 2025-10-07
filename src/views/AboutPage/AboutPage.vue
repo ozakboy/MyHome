@@ -12,25 +12,20 @@
 
                     <div class="hero-text">
                         <h1 class="hero-title">
-                            你好，我是
+                            你好,我是
                             <span class="highlight">韓滷</span>
                         </h1>
                         <h2 class="hero-subtitle">全棧系統工程師</h2>
                         <p class="hero-description">
-                            具備紮實的軟體開發基礎，擅長專案開發規劃、流程設計、各種 Bot 開發、
-                            網頁前後端開發、高頻交易系統、微服務架構等。主要開發語言為 C# .NET，
+                            具備紮實的軟體開發基礎,擅長專案開發規劃、流程設計、各種 Bot 開發、
+                            網頁前後端開發、高頻交易系統、微服務架構等。主要開發語言為 C# .NET,
                             擁有豐富的系統架構設計與實作經驗。
                         </p>
 
                         <div class="contact-buttons">
                             <el-button type="primary" size="large" @click="openEmail">
-                                <el-icon><Message /></el-icon>
+                                <el-icon><Mail01 /></el-icon>
                                 聯繫我
-                            </el-button>
-
-                            <el-button size="large" @click="downloadResume">
-                                <el-icon><Download /></el-icon>
-                                下載簡歷
                             </el-button>
                         </div>
                     </div>
@@ -43,22 +38,23 @@
 
                 <el-row :gutter="30" class="skills-categories">
                     <el-col :xs="24" :sm="12" :md="8" v-for="category in skillCategories" :key="category.id">
-                        <div class="skill-category">
+                        <div class="skill-category-card">
                             <div class="category-header">
-                                <el-icon :size="32" :color="category.color">
-                                    <component :is="category.icon" />
-                                </el-icon>
+                                <div class="category-icon" :style="{ backgroundColor: category.color + '20' }">
+                                    <el-icon :size="32" :color="category.color">
+                                        <component :is="category.icon" />
+                                    </el-icon>
+                                </div>
                                 <h3 class="category-title">{{ category.title }}</h3>
                             </div>
 
                             <div class="skills-list">
-                                <div v-for="skill in category.skills"
-                                     :key="skill.name"
-                                     class="skill-item">
+                                <div class="skill-item" v-for="skill in category.skills" :key="skill.name">
                                     <div class="skill-info">
                                         <span class="skill-name">{{ skill.name }}</span>
                                         <span class="skill-level">{{ skill.level }}%</span>
                                     </div>
+
                                     <el-progress :percentage="skill.level"
                                                  :color="category.color"
                                                  :show-text="false"
@@ -70,13 +66,13 @@
                 </el-row>
             </section>
 
-            <!-- Experience Timeline -->
-            <section class="experience-timeline">
+            <!-- Work Experience -->
+            <section class="work-experience">
                 <h2 class="section-title">工作經歷</h2>
 
-                <el-timeline class="timeline">
-                    <el-timeline-item v-for="(experience, index) in experiences"
-                                      :key="index"
+                <el-timeline class="experience-timeline">
+                    <el-timeline-item v-for="experience in experiences"
+                                      :key="experience.period"
                                       :timestamp="experience.period"
                                       placement="top"
                                       :type="experience.type"
@@ -90,7 +86,7 @@
                             <p class="experience-description">{{ experience.description }}</p>
 
                             <div class="achievements">
-                                <h5>主要成就：</h5>
+                                <h5>主要成就:</h5>
                                 <ul>
                                     <li v-for="achievement in experience.achievements" :key="achievement">
                                         {{ achievement }}
@@ -154,7 +150,7 @@
                                         <div class="edu-content">
                                             <div class="edu-icon">
                                                 <el-icon :size="24" color="#667eea">
-                                                    <School />
+                                                    <School01 />
                                                 </el-icon>
                                             </div>
 
@@ -192,7 +188,6 @@
         </div>
     </div>
 </template>
-
 
 <script src="./AboutPage.js"></script>
 <style type="text/scss" lang="scss">

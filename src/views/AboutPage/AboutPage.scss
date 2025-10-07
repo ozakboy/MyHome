@@ -1,46 +1,69 @@
 ﻿.app-about {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 0px 0;
+
     .page-container {
-        padding: 60px 40px;
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
     }
     // Hero Section
     .about-hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 80px 60px;
         margin-bottom: 80px;
+        box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
 
         .hero-content {
             display: flex;
             align-items: center;
             gap: 60px;
+            position: relative;
+            z-index: 1;
 
             .hero-image {
-                flex: 0 0 400px;
+                flex: 0 0 280px;
 
                 .profile-image {
-                    width: 100%;
-                    height: 400px;
+                    width: 280px;
+                    height: 280px;
+                    border-radius: 50%;
                     object-fit: cover;
-                    border-radius: 20px;
-                    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
-                    transition: transform 0.3s ease;
+                    border: 8px solid rgba(255, 255, 255, 0.3);
+                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                    transition: transform 0.5s ease;
 
                     &:hover {
-                        transform: scale(1.03);
+                        transform: scale(1.05) rotate(3deg);
                     }
                 }
             }
 
             .hero-text {
                 flex: 1;
+                color: white;
 
                 .hero-title {
-                    font-size: 3rem;
+                    font-size: 3.5rem;
                     font-weight: 800;
-                    margin-bottom: 15px;
-                    color: #2c3e50;
+                    margin: 0 0 20px 0;
+                    line-height: 1.2;
 
                     .highlight {
-                        background: linear-gradient(135deg, #667eea, #764ba2);
+                        background: linear-gradient(120deg, #fff 0%, #ffd700 100%);
                         -webkit-background-clip: text;
                         -webkit-text-fill-color: transparent;
                         background-clip: text;
@@ -48,32 +71,35 @@
                 }
 
                 .hero-subtitle {
-                    font-size: 1.8rem;
-                    color: #667eea;
-                    margin-bottom: 25px;
+                    font-size: 2rem;
                     font-weight: 600;
+                    margin: 0 0 30px 0;
+                    opacity: 0.95;
                 }
 
                 .hero-description {
-                    font-size: 1.1rem;
-                    color: #666;
+                    font-size: 1.25rem;
                     line-height: 1.8;
-                    margin-bottom: 35px;
+                    margin: 0 0 40px 0;
+                    opacity: 0.9;
+                    max-width: 700px;
                 }
 
                 .contact-buttons {
                     display: flex;
                     gap: 20px;
+                    flex-wrap: wrap;
 
                     .el-button {
-                        padding: 12px 30px;
-                        font-size: 16px;
-                        border-radius: 25px;
+                        font-size: 1.1rem;
+                        padding: 16px 36px;
+                        border-radius: 12px;
+                        font-weight: 600;
                         transition: all 0.3s ease;
 
                         &:hover {
-                            transform: translateY(-2px);
-                            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+                            transform: translateY(-3px);
+                            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
                         }
                     }
                 }
@@ -82,52 +108,67 @@
     }
     // Skills Overview Section
     .skills-overview {
-        margin-bottom: 80px;
+        margin-bottom: 100px;
 
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3rem;
+            font-weight: 800;
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             color: #2c3e50;
             position: relative;
+            padding-bottom: 20px;
 
             &::after {
                 content: '';
                 position: absolute;
-                bottom: -10px;
+                bottom: 0;
                 left: 50%;
                 transform: translateX(-50%);
-                width: 60px;
-                height: 4px;
-                background: linear-gradient(135deg, #667eea, #764ba2);
-                border-radius: 2px;
+                width: 100px;
+                height: 5px;
+                background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+                border-radius: 10px;
             }
         }
 
         .skills-categories {
-            .skill-category {
+            .skill-category-card {
                 background: white;
-                border-radius: 16px;
-                padding: 30px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-                transition: all 0.3s ease;
+                border-radius: 20px;
+                padding: 40px 30px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+                transition: all 0.4s ease;
+                height: 100%;
                 margin-bottom: 30px;
 
                 &:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+                    transform: translateY(-10px);
+                    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
                 }
 
                 .category-header {
-                    display: flex;
-                    align-items: center;
-                    gap: 15px;
-                    margin-bottom: 25px;
+                    text-align: center;
+                    margin-bottom: 35px;
+
+                    .category-icon {
+                        width: 80px;
+                        height: 80px;
+                        margin: 0 auto 20px;
+                        border-radius: 20px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: transform 0.3s ease;
+
+                        &:hover {
+                            transform: rotate(360deg);
+                        }
+                    }
 
                     .category-title {
-                        font-size: 1.4rem;
-                        font-weight: 600;
+                        font-size: 1.8rem;
+                        font-weight: 700;
                         color: #2c3e50;
                         margin: 0;
                     }
@@ -135,110 +176,153 @@
 
                 .skills-list {
                     .skill-item {
-                        margin-bottom: 20px;
+                        margin-bottom: 25px;
 
-                        &.skill-animated {
-                            .el-progress__bar {
-                                animation: slideIn 1s ease-out;
-                            }
+                        &:last-child {
+                            margin-bottom: 0;
                         }
 
                         .skill-info {
                             display: flex;
                             justify-content: space-between;
-                            margin-bottom: 8px;
+                            margin-bottom: 10px;
 
                             .skill-name {
-                                font-size: 14px;
-                                color: #666;
-                                font-weight: 500;
+                                font-size: 1.15rem;
+                                font-weight: 600;
+                                color: #34495e;
                             }
 
                             .skill-level {
-                                font-size: 14px;
+                                font-size: 1.15rem;
+                                font-weight: 700;
                                 color: #667eea;
-                                font-weight: 600;
                             }
                         }
 
                         .el-progress {
-                            .el-progress__bar {
-                                transition: width 1.5s ease-out;
+                            ::v-deep .el-progress-bar__outer {
+                                border-radius: 10px;
+                                overflow: hidden;
                             }
+
+                            ::v-deep .el-progress-bar__inner {
+                                border-radius: 10px;
+                                transition: width 1s ease;
+                            }
+                        }
+
+                        &.skill-animated {
+                            animation: slideInUp 0.6s ease;
                         }
                     }
                 }
             }
         }
     }
-    // Experience Timeline Section
-    .experience-timeline {
-        margin-bottom: 80px;
+    // Work Experience Section
+    .work-experience {
+        margin-bottom: 100px;
 
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3rem;
+            font-weight: 800;
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             color: #2c3e50;
+            position: relative;
+            padding-bottom: 20px;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100px;
+                height: 5px;
+                background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+                border-radius: 10px;
+            }
         }
 
-        .timeline {
-            padding-left: 20px;
+        .experience-timeline {
+            padding: 20px 0;
 
             .el-timeline-item {
                 padding-bottom: 40px;
 
+                ::v-deep .el-timeline-item__timestamp {
+                    font-size: 1.3rem;
+                    font-weight: 700;
+                    color: #667eea;
+                    margin-bottom: 15px;
+                }
+
                 .experience-card {
-                    transition: all 0.3s ease;
+                    background: white;
+                    border-radius: 20px;
+                    padding: 40px;
+                    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+                    transition: all 0.4s ease;
+                    border: 2px solid transparent;
 
                     &:hover {
                         transform: translateX(10px);
-                        box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+                        box-shadow: 0 15px 50px rgba(102, 126, 234, 0.15);
+                        border-color: rgba(102, 126, 234, 0.3);
                     }
 
                     .experience-header {
-                        margin-bottom: 15px;
+                        margin-bottom: 20px;
 
                         .company-name {
-                            font-size: 1.3rem;
-                            font-weight: 700;
+                            font-size: 1.8rem;
+                            font-weight: 800;
                             color: #2c3e50;
-                            margin: 0 0 5px 0;
+                            margin: 0 0 10px 0;
                         }
 
                         .position {
-                            font-size: 1.1rem;
+                            font-size: 1.4rem;
+                            font-weight: 600;
                             color: #667eea;
                             margin: 0;
-                            font-weight: 500;
                         }
                     }
 
                     .experience-description {
-                        color: #666;
-                        line-height: 1.6;
-                        margin-bottom: 20px;
+                        font-size: 1.15rem;
+                        line-height: 1.8;
+                        color: #5a6c7d;
+                        margin-bottom: 25px;
                     }
 
                     .achievements {
-                        margin-bottom: 20px;
+                        margin-bottom: 25px;
 
                         h5 {
-                            font-size: 1rem;
-                            font-weight: 600;
+                            font-size: 1.25rem;
+                            font-weight: 700;
                             color: #2c3e50;
-                            margin-bottom: 10px;
+                            margin-bottom: 15px;
                         }
 
                         ul {
                             margin: 0;
-                            padding-left: 20px;
+                            padding-left: 25px;
 
                             li {
-                                color: #666;
-                                line-height: 1.8;
-                                margin-bottom: 5px;
+                                font-size: 1.1rem;
+                                color: #5a6c7d;
+                                line-height: 1.9;
+                                margin-bottom: 10px;
+                                position: relative;
+
+                                &::marker {
+                                    color: #667eea;
+                                    font-size: 1.3rem;
+                                }
                             }
                         }
                     }
@@ -246,12 +330,23 @@
                     .tech-stack {
                         display: flex;
                         flex-wrap: wrap;
-                        gap: 8px;
+                        gap: 12px;
 
                         .tech-tag {
+                            font-size: 1rem;
+                            padding: 8px 18px;
                             background: rgba(102, 126, 234, 0.1);
                             color: #667eea;
                             border: none;
+                            border-radius: 20px;
+                            font-weight: 600;
+                            transition: all 0.3s ease;
+
+                            &:hover {
+                                background: #667eea;
+                                color: white;
+                                transform: translateY(-2px);
+                            }
                         }
                     }
                 }
@@ -260,68 +355,92 @@
     }
     // Certificates & Education Section
     .certificates-education {
-        margin-bottom: 80px;
+        margin-bottom: 100px;
 
         .certificates, .education {
             .section-title {
-                font-size: 2rem;
-                font-weight: 700;
-                margin-bottom: 30px;
+                font-size: 2.5rem;
+                font-weight: 800;
+                margin-bottom: 40px;
                 color: #2c3e50;
+                position: relative;
+                padding-bottom: 15px;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 60px;
+                    height: 4px;
+                    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+                    border-radius: 10px;
+                }
             }
 
             .cert-list, .edu-list {
                 .cert-item, .edu-item {
-                    margin-bottom: 20px;
+                    margin-bottom: 25px;
 
                     .cert-card, .edu-card {
-                        transition: all 0.3s ease;
+                        transition: all 0.4s ease;
                         cursor: pointer;
+                        border-radius: 16px;
+                        overflow: hidden;
 
                         &:hover {
-                            transform: translateY(-5px);
-                            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+                            transform: translateY(-8px);
+                            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.2);
                         }
 
                         .cert-content, .edu-content {
                             display: flex;
                             align-items: center;
-                            gap: 20px;
-                            padding: 5px;
+                            gap: 25px;
+                            padding: 25px;
 
                             .cert-icon, .edu-icon {
-                                flex: 0 0 50px;
-                                height: 50px;
+                                flex: 0 0 70px;
+                                height: 70px;
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
                                 background: rgba(102, 126, 234, 0.1);
-                                border-radius: 12px;
+                                border-radius: 16px;
+                                transition: all 0.3s ease;
+                            }
+
+                            &:hover {
+                                .cert-icon, .edu-icon {
+                                    transform: scale(1.1) rotate(5deg);
+                                }
                             }
 
                             .cert-info, .edu-info {
                                 flex: 1;
 
                                 h4 {
-                                    font-size: 1.1rem;
-                                    font-weight: 600;
+                                    font-size: 1.3rem;
+                                    font-weight: 700;
                                     color: #2c3e50;
-                                    margin: 0 0 5px 0;
+                                    margin: 0 0 8px 0;
+                                    line-height: 1.4;
                                 }
 
                                 p {
                                     margin: 0;
-                                    color: #666;
-                                    font-size: 14px;
+                                    font-size: 1.1rem;
+                                    line-height: 1.6;
 
                                     &.cert-issuer, &.edu-school {
                                         color: #667eea;
-                                        font-weight: 500;
+                                        font-weight: 600;
+                                        margin-bottom: 5px;
                                     }
 
                                     &.cert-date, &.edu-period {
-                                        color: #999;
-                                        font-size: 13px;
+                                        color: #95a5a6;
+                                        font-size: 1rem;
                                     }
                                 }
                             }
@@ -333,115 +452,160 @@
     }
     // Personal Interests Section
     .personal-interests {
-        margin-bottom: 60px;
+        margin-bottom: 20px;
 
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3rem;
+            font-weight: 800;
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             color: #2c3e50;
+            position: relative;
+            padding-bottom: 20px;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100px;
+                height: 5px;
+                background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+                border-radius: 10px;
+            }
         }
 
         .interests-grid {
             .interest-item {
                 text-align: center;
-                padding: 30px 20px;
+                padding: 40px 25px;
                 background: white;
-                border-radius: 16px;
-                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-                transition: all 0.3s ease;
-                margin-bottom: 20px;
+                border-radius: 20px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+                transition: all 0.4s ease;
+                margin-bottom: 25px;
+                cursor: pointer;
 
                 &:hover {
-                    transform: translateY(-8px) scale(1.05);
-                    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.25);
+                    transform: translateY(-10px) scale(1.05);
+                    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
 
                     .interest-icon {
-                        transform: rotate(360deg);
+                        transform: scale(1.2) rotate(10deg);
                     }
                 }
 
                 .interest-icon {
-                    margin-bottom: 15px;
-                    transition: transform 0.5s ease;
+                    margin-bottom: 20px;
+                    transition: transform 0.4s ease;
                 }
 
                 .interest-name {
-                    font-size: 1rem;
-                    font-weight: 600;
+                    font-size: 1.3rem;
+                    font-weight: 700;
                     color: #2c3e50;
                     margin: 0;
                 }
             }
         }
     }
-}
-
-// 動畫效果
-@keyframes slideIn {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: inherit;
-    }
-}
-
-// 響應式設計
-@media (max-width: 968px) {
-    .app-about {
-        .page-container {
-            padding: 40px 20px;
+    // Animations
+    @keyframes float {
+        0%, 100% {
+            transform: translate(0, 0) rotate(0deg);
         }
 
+        50% {
+            transform: translate(20px, 20px) rotate(5deg);
+        }
+    }
+
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    // Responsive Design
+    @media (max-width: 1200px) {
         .about-hero {
+            padding: 60px 40px;
+
             .hero-content {
-                flex-direction: column;
-                text-align: center;
+                gap: 40px;
 
-                .hero-image {
-                    flex: 0 0 300px;
-
-                    .profile-image {
-                        height: 300px;
-                    }
+                .hero-image .profile-image {
+                    width: 220px;
+                    height: 220px;
                 }
 
                 .hero-text {
                     .hero-title {
-                        font-size: 2.5rem;
+                        font-size: 2.8rem;
                     }
 
                     .hero-subtitle {
-                        font-size: 1.5rem;
+                        font-size: 1.6rem;
                     }
 
-                    .contact-buttons {
-                        justify-content: center;
+                    .hero-description {
+                        font-size: 1.1rem;
                     }
                 }
             }
         }
-    }
-}
 
-@media (max-width: 768px) {
-    .app-about {
+        .section-title {
+            font-size: 2.5rem !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: 20px 0;
+
         .about-hero {
+            padding: 40px 30px;
+            margin-bottom: 50px;
+
             .hero-content {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+
+                .hero-image {
+                    flex: 0 0 auto;
+
+                    .profile-image {
+                        width: 180px;
+                        height: 180px;
+                    }
+                }
+
                 .hero-text {
                     .hero-title {
-                        font-size: 2rem;
+                        font-size: 2.2rem;
+                    }
+
+                    .hero-subtitle {
+                        font-size: 1.4rem;
+                    }
+
+                    .hero-description {
+                        font-size: 1rem;
                     }
 
                     .contact-buttons {
-                        flex-direction: column;
-                        align-items: center;
+                        justify-content: center;
 
                         .el-button {
-                            width: 200px;
+                            font-size: 1rem;
+                            padding: 14px 28px;
                         }
                     }
                 }
@@ -450,6 +614,137 @@
 
         .section-title {
             font-size: 2rem !important;
+        }
+
+        .skills-overview,
+        .work-experience,
+        .certificates-education,
+        .personal-interests {
+            margin-bottom: 60px;
+        }
+
+        .skills-overview .skills-categories .skill-category-card {
+            padding: 30px 25px;
+
+            .category-header {
+                .category-icon {
+                    width: 60px;
+                    height: 60px;
+                }
+
+                .category-title {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        .work-experience .experience-timeline .el-timeline-item .experience-card {
+            padding: 30px 25px;
+
+            .experience-header {
+                .company-name {
+                    font-size: 1.5rem;
+                }
+
+                .position {
+                    font-size: 1.2rem;
+                }
+            }
+
+            .experience-description {
+                font-size: 1rem;
+            }
+
+            .achievements {
+                h5 {
+                    font-size: 1.1rem;
+                }
+
+                ul li {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        .certificates-education {
+            .certificates, .education {
+                .section-title {
+                    font-size: 2rem !important;
+                }
+
+                .cert-list, .edu-list {
+                    .cert-item, .edu-item {
+                        .cert-card, .edu-card {
+                            .cert-content, .edu-content {
+                                gap: 20px;
+                                padding: 20px;
+
+                                .cert-icon, .edu-icon {
+                                    flex: 0 0 50px;
+                                    height: 50px;
+                                }
+
+                                .cert-info, .edu-info {
+                                    h4 {
+                                        font-size: 1.1rem;
+                                    }
+
+                                    p {
+                                        font-size: 1rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .personal-interests {
+            .interests-grid {
+                .interest-item {
+                    padding: 30px 20px;
+
+                    .interest-name {
+                        font-size: 1.1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        .about-hero {
+            padding: 30px 20px;
+
+            .hero-content {
+                .hero-text {
+                    .hero-title {
+                        font-size: 1.8rem;
+                    }
+
+                    .hero-subtitle {
+                        font-size: 1.2rem;
+                    }
+
+                    .hero-description {
+                        font-size: 0.95rem;
+                    }
+
+                    .contact-buttons {
+                        flex-direction: column;
+                        width: 100%;
+
+                        .el-button {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+
+        .section-title {
+            font-size: 1.8rem !important;
         }
     }
 }

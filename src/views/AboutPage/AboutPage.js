@@ -10,7 +10,7 @@ export default {
             {
                 id: 1,
                 title: '後端技術',
-                icon: 'Server',
+                icon: 'Database',
                 color: '#667eea',
                 skills: [
                     { name: 'C# / .NET Core', level: 95 },
@@ -22,7 +22,7 @@ export default {
             {
                 id: 2,
                 title: '前端技術',
-                icon: 'Monitor',
+                icon: 'Code',
                 color: '#f093fb',
                 skills: [
                     { name: 'Vue.js 3', level: 90 },
@@ -35,7 +35,7 @@ export default {
             {
                 id: 3,
                 title: 'DevOps & 工具',
-                icon: 'Setting',
+                icon: 'Settings02',
                 color: '#4facfe',
                 skills: [
                     { name: 'Docker ', level: 80 },
@@ -54,26 +54,26 @@ export default {
                 company: '自由接案',
                 position: '全棧系統工程師',
                 type: 'primary',
-                description: '為各類客戶提供客製化系統開發服務，包含網頁應用、交易系統、Bot 開發等',
+                description: '為各類客戶提供客製化系統開發服務,包含網頁應用、交易系統、Bot 開發等',
                 achievements: [
                     '獨立完成 5+ 個大型專案的設計與開發',
-                    '開發高頻交易系統，每日處理超過百萬筆交易',
+                    '開發高頻交易系統,每日處理超過百萬筆交易',
                     '設計並實現多個 Line Bot 與 Discord Bot 專案',
-                    '協助客戶將系統架構微服務化，提升 40% 的系統效能'
+                    '協助客戶將系統架構微服務化,提升 40% 的系統效能'
                 ],
-                technologies: ['C#', '.NET Core', 'Vue.js', 'MSSQL', 'Docker', '微服務', 'Bot 開發', 'Azure','AWS']
+                technologies: ['C#', '.NET Core', 'Vue.js', 'MSSQL', 'Docker', '微服務', 'Bot 開發', 'Azure', 'AWS']
             },
             {
                 period: '2020 - 2021',
                 company: '百家成投資有限公司',
                 position: '資深後端工程師',
                 type: 'success',
-                description: '負責公司核心產品的後端開發與架構設計，帶領團隊完成多項重要專案',
+                description: '負責公司核心產品的後端開發與架構設計,帶領團隊完成多項重要專案',
                 achievements: [
                     '主導公司產品從單體架構轉換為微服務架構',
-                    '優化資料庫查詢效能，降低 60% 的回應時間',
-                    '建立自動化部署流程，縮短 50% 的部署時間',
-                    '指導 3 名初級工程師，協助團隊技術成長'
+                    '優化資料庫查詢效能,降低 60% 的回應時間',
+                    '建立自動化部署流程,縮短 50% 的部署時間',
+                    '指導 3 名初級工程師,協助團隊技術成長'
                 ],
                 technologies: ['C#', '.NET Core', 'MSSQL', 'Redis', 'Azure']
             },
@@ -82,11 +82,11 @@ export default {
                 company: '軟體開發公司',
                 position: '後端工程師',
                 type: 'warning',
-                description: '參與多個客戶專案的開發，累積豐富的實戰經驗',
+                description: '參與多個客戶專案的開發,累積豐富的實戰經驗',
                 achievements: [
                     '獨立完成 3 個中型專案的後端開發',
-                    '導入單元測試，提升程式碼品質',
-                    '優化 API 效能，提升 30% 的處理速度'
+                    '導入單元測試,提升程式碼品質',
+                    '優化 API 效能,提升 30% 的處理速度'
                 ],
                 technologies: ['C#', '.NET Framework', 'Web API', 'Entity Framework', 'MSSQL']
             }
@@ -99,7 +99,7 @@ export default {
                 name: 'Microsoft Certified: Azure Developer Associate',
                 issuer: 'Microsoft',
                 date: '2023年6月',
-                icon: 'Trophy',
+                icon: 'Certificate01',
                 color: '#0078d4'
             },
             {
@@ -107,7 +107,7 @@ export default {
                 name: 'AWS Certified Developer - Associate',
                 issuer: 'Amazon Web Services',
                 date: '2022年11月',
-                icon: 'Medal',
+                icon: 'Medal01',
                 color: '#ff9900'
             },
         ])
@@ -119,18 +119,18 @@ export default {
                 degree: '資訊網路系 學士',
                 school: '嶺東科技大學',
                 period: '2011 - 2015',
-                description: '專題：晉暘科技 - 線上申報維修系統網站'
+                description: '專題:晉暘科技 - 線上申報維修系統網站'
             }
         ])
 
         // 個人興趣資料
         const interests = ref([
-            { id: 1, name: '程式開發', icon: 'Monitor', color: '#667eea' },
-            { id: 2, name: '金融科技', icon: 'TrendCharts', color: '#43e97b' },
-            { id: 3, name: '開源貢獻', icon: 'Share', color: '#f093fb' },
-            { id: 4, name: '技術寫作', icon: 'EditPen', color: '#ffd700' },
-            { id: 5, name: '健身運動', icon: 'Soccer', color: '#ff6b6b' },
-            { id: 6, name: '閱讀學習', icon: 'Reading', color: '#4facfe' }
+            { id: 1, name: '程式開發', icon: 'Code', color: '#667eea' },
+            { id: 2, name: '金融科技', icon: 'ChartLineData01', color: '#43e97b' },
+            { id: 3, name: '開源貢獻', icon: 'Share01', color: '#f093fb' },
+            { id: 4, name: '技術寫作', icon: 'PencilEdit01', color: '#ffd700' },
+            { id: 5, name: '健身運動', icon: 'Football', color: '#ff6b6b' },
+            { id: 6, name: '閱讀學習', icon: 'Book01', color: '#4facfe' }
         ])
 
         // 方法
@@ -138,11 +138,6 @@ export default {
             window.location.href = 'mailto:awc0450056@gmail.com'
         }
 
-        const downloadResume = () => {
-            ElMessage.info('履歷下載功能開發中...')
-            // 實際專案中會下載 PDF 檔案
-            // window.open('/resume.pdf', '_blank')
-        }
 
         // 動畫效果
         const animateSkills = () => {
@@ -171,8 +166,7 @@ export default {
             certificates,
             education,
             interests,
-            openEmail,
-            downloadResume
+            openEmail,            
         }
     }
 }
